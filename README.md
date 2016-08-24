@@ -15,3 +15,9 @@
     -i, --init                     Init dir as a git repo
     -c, --create <create>          Create repository
     -s, --script                   Create repository script copy to bash ["zsh", "bash"]
+
+
+# Known issues
+
+- Create git repository doesn't working properly.
+ 
