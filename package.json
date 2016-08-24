@@ -1,0 +1,35 @@
+{
+  "name": "g3l",
+  "version": "2.0.0",
+  "description": "Git Commit Easy",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagataycali/g3l.git"
+  },
+  "bin": {
+    "g3l": "./index.js"
+  },
+  "keywords": [
+    "Git",
+    "git",
+    "commit",
+    "npm",
+    "node"
+  ],
+  "author": "Çağatay Çalı",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cagataycali/g3l/issues"
+  },
+  "homepage": "https://github.com/cagataycali/g3l#readme",
+  "dependencies": {
+    "1n1t": "^1.0.11",
+    "3x3c": "^1.0.1",
+    "async": "^2.0.1",
+    "br4nch": "^1.0.3",
+    "c0mm1t": "^1.0.3",
+    "commander": "^2.9.0",
+    "prompt": "^1.0.0"
+  }
+}
