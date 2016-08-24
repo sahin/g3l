@@ -4,7 +4,7 @@
 [sudo] npm i g3l -g
 ```
 
-#  Usage: index [options]
+#  Usage: g3l [options]
 
   Options:
 
@@ -20,4 +20,3 @@
 # Known issues
 
 - Create git repository doesn't working properly.
- 
