@@ -77,11 +77,11 @@ function run(array) {
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
               console.log(colors.green(piece.name));
-              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow.underline(value));}).catch((err) => {console.log(colors.red(err));})');
+              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
             } else {
               piece.params.forEach(function(param) {
                 console.log(`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
-                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow.underline(value));}).catch((err) => {console.log(colors.red(err));})');
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
          } else {
