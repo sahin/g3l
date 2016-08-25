@@ -25,10 +25,10 @@
   "homepage": "https://github.com/cagataycali/g3l#readme",
   "dependencies": {
     "1n1t": "^1.0.11",
-    "3x3c": "^1.0.1",
+    "3x3c": "^1.0.2",
     "async": "^2.0.1",
-    "br4nch": "^1.0.3",
-    "c0mm1t": "^1.0.4",
+    "br4nch": "^1.0.4",
+    "c0mm1t": "^1.0.6",
     "commander": "^2.9.0",
     "prompt": "^1.0.0"
   }
