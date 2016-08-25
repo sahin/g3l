@@ -30,6 +30,7 @@
     "br4nch": "^1.0.5",
     "c0mm1t": "^1.0.8",
     "commander": "^2.9.0",
-    "prompt": "^1.0.0"
+    "prompt": "^1.0.0",
+    "underscore": "^1.8.3"
   }
 }
