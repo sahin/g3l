@@ -1,186 +1,150 @@
 #!/usr/bin/env node
-var C = require('c0mm1t');
-var E = require('3x3c');
-var I = require('1n1t');
-var B = require('br4nch');
-var async = require('async');
-var spawn = require('child_process').spawn;
-
 var program = require('commander');
+var B = require('br4nch');
+var _ = require('underscore');
+var C = require('c0mm1t');
+var async = require('async');
+var colors = require('colors');
+var E = require('3x3c');
+var updateNotifier = require('update-notifier');
+var pkg = require('./package.json');
+updateNotifier({pkg}).notify();
+
 program
 .option('-m, --message <message>', 'Commit message')
-.option('-b, --new_branch <new_branch>', 'Git push origin as a new branch')
+.option('-b, --new_branch <branch>', 'Git push origin as a new branch')
 .option('-p, --publish', 'After process publish repo as a npm package')
-.option('-i, --init', 'Init dir as a git repo')
-.option('-c, --create <create>', 'Create repository')
-.option('-cl, --clone', 'Clone repository')
-.option('-s, --script', 'Create repository script copy to bash ["zsh", "bash"]')
+.option('-i, --init', 'Git init')
+.option('-v, --verbose', 'Show process')
 .parse(process.argv);
 
-function runner(cmd, repo, username) {
-  return new Promise(function (resolve, reject) {
-    var spawn = require('child_process').spawn;
-    var command = spawn(cmd, [repo, username], {
-      cwd: process.cwd(),
-      stdio: 'inherit'
-    });
-    var result = '';
-    command.stdout.on('data', function(data) {
-         result += data.toString();
-    });
-    command.on('close', function(code) {
-        resolve(result);
-    });
-  })
-}
+var commands = [
+  {
+    name: "new_branch",
+    command: "git checkout -b ${branch}",
+    description: "Git checkout new branch easily",
+    priority: 99,
+    boolean: false,
+    containRequiredParam: true,
+    function: "branch",
+    params: [
+      {
+        name: "branch",
+      }
+    ]
+  },
+  {
+    name: "init",
+    command: "git init",
+    description: "Git checkout new branch easily",
+    priority: 100,
+    boolean: true,
+    containRequiredParam: false,
+    function: "init",
+    params: []
+  },
+  {
+    name: "message",
+    command: "git add . && git commit -m ${message} && git push origin ${branch}",
+    description: "Git commit easily",
+    priority: 95,
+    boolean: false,
+    containRequiredParam: true,
+    function: "message",
+    params: [
+      {
+        name: "message",
+      }
+    ],
+  },
+  {
+    name: "publish",
+    command: "npm version patch && npm publish",
+    description: "Npm publish easily",
+    boolean: true,
+    function: "publish",
+    priority: 90,
+    containRequiredParam: false,
+    params: [],
+  }
+];
 
-if (program.script) {
-  E(`git clone https://github.com/cagataycali/create ~/.create/ && sudo echo "alias create=$HOME/.create/create.sh" >> ~/.zshrc && sudo chmod -R 777 ~/.create/create.sh`)
-  .then((value) => {console.log('Bash script copied');})
-  .catch((err) => {console.log(err);})
-} // && sudo echo "alias create=$HOME/.create/create.sh" >> ~/.zshrc
-
-if (program.create && !program.init) {
-  E(`git config user.name`) // Be sure your git.config.username equal your github username
-    .then((username) => {
-      runner('create', program.create, username)
-      // runner('sudo ~/.create/create.sh', program.create, username)
-        .then((value) => {console.log(value);})
-        .catch((err) => {console.log(err);})
-    })
-    .catch((err) => {console.log(err)});
-}
-
-if (program.init && !program.create) {
-  var prompt = require('prompt');
-  prompt.start();
-  prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
-    E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
-      .then((value) => {console.log(value)})
-      .catch((err) => {console.log(err)});
-  });
-}
-
-if (program.clone && !program.create && !program.init && !program.message && !program.publish) {
-  var prompt = require('prompt');
-  prompt.start();
-  prompt.get([
-    {
-      name:'url',
-      required: true,
-      description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git",
-    },
-    {
-      name:'name',
-      required: true,
-      description: "As a..",
-    },
-], function (err, result) {
-    E(`git clone ${result.url} ${result.name} && cd ${result.name}`)
-      .then((value) => {console.log(value)})
-      .catch((err) => {console.log(err)});
-  });
-}
-
-if (program.new_branch && program.message && !program.publish && !program.init) {
- E(`git checkout -b ${program.new_branch}`)
-   .then((value) => {
-     console.log(`New branch created as ${program.new_branch}`);
-     if (program.message) {
-       C(program.message)
-         .then(function(value) {
-           console.log(value)
-         })
-         .catch(function(err) {console.log(err)});
-       } else {
-         console.log('Use like this: \n gcom -m "Message"');
+function run(array) {
+  return new Promise(function(resolve, reject) {
+     array.forEach(function(piece) {
+       if (eval('program.'+piece.name)) {
+         console.log('Running:'.underline, colors.rainbow(piece.name));
+         if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
+            if (piece.boolean) {
+              console.log(colors.green(piece.name));
+              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow.underline(value));}).catch((err) => {console.log(colors.red(err));})');
+            } else {
+              piece.params.forEach(function(param) {
+                console.log(`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow.underline(value));}).catch((err) => {console.log(colors.red(err));})');
+              });
+            }
+         } else {
+           console.log(piece.function + '(' + piece + ').then((value) => {console.log(value);}).catch((err) => {console.log(err);})');
+           process.exit(1);
+         }
        }
-   });
-}
-
-if (program.new_branch && !program.message && !program.publish && !program.init) {
- E(`git checkout -b ${program.new_branch}`)
-   .then((value) => {
-     console.log(`New branch created as ${program.new_branch}`);
-   });
-}
-
-if (program.new_branch && program.message && !program.publish && program.init) {
-  var prompt = require('prompt');
-  prompt.start();
-  prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
-    E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
-      .then((value) => {
-        console.log(value.split('/').pop(-1))
-        E(`git checkout -b ${program.new_branch}`)
-          .then((value) => {
-            console.log(`New branch created as ${program.new_branch}`);
-            if (program.message) {
-              C(program.message)
-                .then(function(value) {
-                  console.log(value)
-                })
-                .catch(function(err) {console.log(err)});
-              } else {
-                console.log('Use like this: \n gcom -m "Message"');
-              }
-          });
-        })
-      .catch((err) => {console.log(err)});
+     });
+     resolve('Done')
   });
 }
 
-if (program.new_branch && program.message && program.publish && program.init) {
-  var prompt = require('prompt');
-  prompt.start();
-  prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
-    E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
-      .then((value) => {
-        console.log(value.split('/').pop(-1))
-        E(`git checkout -b ${program.new_branch}`)
-          .then((value) => {
-            console.log(`New branch created as ${program.new_branch}`);
-            if (program.message) {
-              C(program.message)
-                .then(function(value) {
-                  console.log(value)
-                  E('npm version patch && npm publish')
-                    .then((value) => {console.log(value);})
-                    .catch((err) => {console.log(err);})
-                })
-                .catch(function(err) {console.log(err)});
-              } else {
-                console.log('Use like this: \n gcom -m "Message"');
-              }
-          });
-        })
-      .catch((err) => {console.log(err)});
+/* Sort by priority */
+commands = _.sortBy(commands, 'priority').reverse();
+
+/* Run commands */
+run(commands)
+  .then((value) => {console.log(value);})
+  .catch((err) => {console.log(err);})
+
+
+  /* ---------- Functions ----------  */
+
+
+function init(command) {
+  return new Promise(function(resolve, reject) {
+    B()
+      .then((value) => {resolve('Git already initialized this directory')})
+      .catch((err) => {
+        var prompt = require('prompt');
+        prompt.start();
+        prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
+          E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
+            .then((value) => {resolve('Git initialized.')})
+            .catch((err) => {reject(err)});
+        });
+    });
   });
 }
 
-if (program.message && !program.init && !program.new_branch && !program.publish) {
-  C(program.message)
-    .then(function(value) {
-      console.log(value)
-    })
-    .catch(function(err) {console.log(err)});
+
+function branch(command) {
+  return new Promise(function(resolve, reject) {
+    E(`git checkout -b ${program.new_branch}`)
+     .then((value) => {resolve(`New branch created: ${program.new_branch}`);})
+     .catch((err) => {reject(err)});
+  });
 }
 
-if (program.message && program.publish && !program.init && !program.new_branch) {
-  C(program.message)
-    .then(function(value) {
-      console.log(value);
-      console.log('Codes publishing now!');
-      E('npm version patch && npm publish')
-        .then((value) => {console.log(value);})
-        .catch((err) => {console.log(err);})
-    })
-    .catch(function(err) {console.log(err)});
+function message(command) {
+  return new Promise(function(resolve, reject) {
+    C(program.message)
+    .then(function(value) {resolve(value);})
+    .catch(function(err) {reject(err)});
+  });
 }
 
-if (program.publish && !program.init && !program.new_branch && !program.message) {
-  console.log('Codes publishing now!');
-  E('npm version patch && npm publish')
-    .then((value) => {console.log(value);})
-    .catch((err) => {console.log(err);})
+function publish(command) {
+  return new Promise(function(resolve, reject) {
+    E('npm version patch && npm publish')
+     .then((value) => {resolve(value);})
+     .catch((err) => {reject(err);})
+  });
 }
+
+  /* ---------- Functions ----------  */
