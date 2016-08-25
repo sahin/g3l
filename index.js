@@ -76,6 +76,13 @@ if (program.new_branch && program.message && !program.publish && !program.init) 
    });
 }
 
+if (program.new_branch && !program.message && !program.publish && !program.init) {
+ E(`git checkout -b ${program.new_branch}`)
+   .then((value) => {
+     console.log(`New branch created as ${program.new_branch}`);
+   });
+}
+
 if (program.new_branch && program.message && !program.publish && program.init) {
   var prompt = require('prompt');
   prompt.start();
