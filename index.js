@@ -13,6 +13,7 @@ program
 .option('-p, --publish', 'After process publish repo as a npm package')
 .option('-i, --init', 'Init dir as a git repo')
 .option('-c, --create <create>', 'Create repository')
+.option('-cl, --clone', 'Clone repository')
 .option('-s, --script', 'Create repository script copy to bash ["zsh", "bash"]')
 .parse(process.argv);
 
@@ -55,7 +56,28 @@ if (program.init && !program.create) {
   prompt.start();
   prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
     E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
-      .then((value) => {console.log(value.split('/').pop(-1))})
+      .then((value) => {console.log(value)})
+      .catch((err) => {console.log(err)});
+  });
+}
+
+if (program.clone && !program.create && !program.init && !program.message && !program.publish) {
+  var prompt = require('prompt');
+  prompt.start();
+  prompt.get([
+    {
+      name:'url',
+      required: true,
+      description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git",
+    },
+    {
+      name:'name',
+      required: true,
+      description: "As a..",
+    },
+], function (err, result) {
+    E(`git clone ${result.url} ${result.name} && cd ${result.name}`)
+      .then((value) => {console.log(value)})
       .catch((err) => {console.log(err)});
   });
 }
