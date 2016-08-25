@@ -90,7 +90,7 @@ function run(array) {
          }
        }
      });
-     resolve('Done')
+     resolve(colors.inverse('Running process started \n\n'))
   });
 }
 
