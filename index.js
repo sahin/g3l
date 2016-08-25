@@ -65,7 +65,7 @@ if (program.new_branch && program.message && !program.publish && !program.init) 
    .then((value) => {
      console.log(`New branch created as ${program.new_branch}`);
      if (program.message) {
-       C(program.message, , program.new_branch)
+       C(program.message)
          .then(function(value) {
            console.log(value)
          })
@@ -87,7 +87,7 @@ if (program.new_branch && program.message && !program.publish && program.init) {
           .then((value) => {
             console.log(`New branch created as ${program.new_branch}`);
             if (program.message) {
-              C(program.message, program.new_branch)
+              C(program.message)
                 .then(function(value) {
                   console.log(value)
                 })
@@ -112,7 +112,7 @@ if (program.new_branch && program.message && program.publish && program.init) {
           .then((value) => {
             console.log(`New branch created as ${program.new_branch}`);
             if (program.message) {
-              C(program.message, program.new_branch)
+              C(program.message)
                 .then(function(value) {
                   console.log(value)
                   E('npm version patch && npm publish')
