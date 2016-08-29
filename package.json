@@ -31,7 +31,7 @@
     "bugsnag": "^1.8.0",
     "c0mm1t": "^1.0.8",
     "commander": "^2.9.0",
-    "cr34t3": "^1.0.15",
+    "cr34t3": "^1.0.16",
     "prompt": "^1.0.0",
     "underscore": "^1.8.3",
     "update-notifier": "^1.0.2"

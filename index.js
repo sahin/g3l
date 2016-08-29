@@ -11,7 +11,7 @@ var E = require('3x3c');
 var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
 updateNotifier({pkg}).notify();
-var C = require('cr34te');
+var C = require('cr34t3');
 
 program
 .option('-m, --message <message>', 'Commit message')
