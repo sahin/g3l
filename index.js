@@ -19,6 +19,7 @@ program
 .option('-p, --publish', 'After process publish repo as a npm package')
 .option('-i, --init', 'Git init')
 .option('-s, --status', 'Git status')
+.option('-c, --create', 'Create github repository')
 .option('-v, --verbose', 'Show process')
 .parse(process.argv);
 
