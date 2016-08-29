@@ -99,14 +99,14 @@ function run(array) {
   return new Promise(function(resolve, reject) {
      array.forEach(function(piece) {
        if (eval('program.'+piece.name)) {
-         console.log('Running:'.underline, colors.rainbow(piece.name));
+         console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name));
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              console.log(colors.green(piece.name));
+              console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
               eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
             } else {
               piece.params.forEach(function(param) {
-                console.log(`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
+                console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
                 eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
