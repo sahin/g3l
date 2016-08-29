@@ -99,7 +99,7 @@ function run(array) {
   return new Promise(function(resolve, reject) {
      array.forEach(function(piece) {
        if (eval('program.'+piece.name)) {
-         console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name));
+         console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name), ":dark_sunglasses: \n");
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
               console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
@@ -186,8 +186,10 @@ function create(command) {
      console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your github username already set in your git config, run 'git config --global github.user <username>`)));
      console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your ssh keys registered in github, look at https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/`)));
      CR()
-       .then((value) => {console.log(value);})
-       .catch((err) => {console.log(err);});
+       .then((value) => {
+         resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
+       })
+       .catch((err) => {reject(err);});
   });
 }
 
