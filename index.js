@@ -15,6 +15,7 @@ program
 .option('-b, --new_branch <branch>', 'Git push origin as a new branch')
 .option('-p, --publish', 'After process publish repo as a npm package')
 .option('-i, --init', 'Git init')
+.option('-s, --status', 'Git status')
 .option('-v, --verbose', 'Show process')
 .parse(process.argv);
 
@@ -63,6 +64,16 @@ var commands = [
     description: "Npm publish easily",
     boolean: true,
     function: "publish",
+    priority: 90,
+    containRequiredParam: false,
+    params: [],
+  },
+  {
+    name: "status",
+    command: "git status",
+    description: "Git status",
+    boolean: true,
+    function: "status",
     priority: 90,
     containRequiredParam: false,
     params: [],
@@ -142,6 +153,14 @@ function message(command) {
 function publish(command) {
   return new Promise(function(resolve, reject) {
     E('npm version patch && npm publish')
+     .then((value) => {resolve(value);})
+     .catch((err) => {reject(err);})
+  });
+}
+
+function status(command) {
+  return new Promise(function(resolve, reject) {
+    E('git status')
      .then((value) => {resolve(value);})
      .catch((err) => {reject(err);})
   });
