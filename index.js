@@ -183,8 +183,8 @@ function status(command) {
 
 function create(command) {
   return new Promise(function(resolve, reject) {
-     console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your github username already set in your git config, run 'git config --global github.user <username>`)));
-     console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your ssh keys registered in github, look at https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/`)));
+     console.log(emoji.emojify(' :rotating_light: '), emoji.emojify(colors.green(`Be sure about your github username already set in your git config, run: `)), colors.inverse('git config --global github.user <username>'));
+     console.log(emoji.emojify(' :rotating_light: '), emoji.emojify(colors.green(`Be sure about your ssh keys registered in github, look at: `)), colors.inverse('https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/'));
      CR()
        .then((value) => {
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
