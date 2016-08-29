@@ -185,6 +185,8 @@ function create(command) {
   return new Promise(function(resolve, reject) {
      CR()
        .then((value) => {
+         console.log(value);
+         console.log(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
        })
        .catch((err) => {reject(err);});
