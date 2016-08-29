@@ -11,6 +11,7 @@ var E = require('3x3c');
 var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
 updateNotifier({pkg}).notify();
+var C = require('cr34te');
 
 program
 .option('-m, --message <message>', 'Commit message')
@@ -76,6 +77,16 @@ var commands = [
     description: "Git status",
     boolean: true,
     function: "status",
+    priority: 90,
+    containRequiredParam: false,
+    params: [],
+  },
+  {
+    name: "create",
+    command: "git create new repo",
+    description: "Create new github repository",
+    boolean: true,
+    function: "create",
     priority: 90,
     containRequiredParam: false,
     params: [],
@@ -165,6 +176,14 @@ function status(command) {
     E('git status')
      .then((value) => {resolve(value);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
+  });
+}
+
+function create(command) {
+  return new Promise(function(resolve, reject) {
+   C()
+     .then((value) => {console.log(value);})
+     .catch((err) => {console.log(err);});
   });
 }
 
