@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 var program = require('commander');
+var emoji = require('node-emoji');
 var bugsnag = require("bugsnag");
 bugsnag.register("ae3b5df916a42d652f9a9dd8c34009bd");
 var B = require('br4nch');
@@ -182,9 +183,11 @@ function status(command) {
 
 function create(command) {
   return new Promise(function(resolve, reject) {
-   CR()
-     .then((value) => {console.log(value);})
-     .catch((err) => {console.log(err);});
+     console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your github username already set in your git config, run 'git config --global github.user <username>`)));
+     console.log(emoji.emojify(colors.green(` :heavy_check_mark: Be sure about your ssh keys registered in github, look at https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/`)));
+     CR()
+       .then((value) => {console.log(value);})
+       .catch((err) => {console.log(err);});
   });
 }
 
