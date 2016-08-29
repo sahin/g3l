@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 var program = require('commander');
+var bugsnag = require("bugsnag");
+bugsnag.register("ae3b5df916a42d652f9a9dd8c34009bd");
 var B = require('br4nch');
 var _ = require('underscore');
 var C = require('c0mm1t');
@@ -127,7 +129,7 @@ function init(command) {
         prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
           E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
             .then((value) => {resolve('Git initialized.')})
-            .catch((err) => {reject(err)});
+            .catch((err) => {bugsnag.notify(new Error(err));reject(err)});
         });
     });
   });
@@ -138,7 +140,7 @@ function branch(command) {
   return new Promise(function(resolve, reject) {
     E(`git checkout -b ${program.new_branch}`)
      .then((value) => {resolve(`New branch created: ${program.new_branch}`);})
-     .catch((err) => {reject(err)});
+     .catch((err) => {bugsnag.notify(new Error(err));reject(err)});
   });
 }
 
@@ -146,7 +148,7 @@ function message(command) {
   return new Promise(function(resolve, reject) {
     C(program.message)
     .then(function(value) {resolve(value);})
-    .catch(function(err) {reject(err)});
+    .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
   });
 }
 
@@ -154,7 +156,7 @@ function publish(command) {
   return new Promise(function(resolve, reject) {
     E('npm version patch && npm publish')
      .then((value) => {resolve(value);})
-     .catch((err) => {reject(err);})
+     .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
   });
 }
 
@@ -162,7 +164,7 @@ function status(command) {
   return new Promise(function(resolve, reject) {
     E('git status')
      .then((value) => {resolve(value);})
-     .catch((err) => {reject(err);})
+     .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
   });
 }
 
