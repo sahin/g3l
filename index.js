@@ -21,7 +21,6 @@ program
 .option('-i, --init', 'Git init')
 .option('-s, --status', 'Git status')
 .option('-c, --create', 'Create github repository')
-.option('-v, --verbose', 'Show process')
 .parse(process.argv);
 
 var commands = [

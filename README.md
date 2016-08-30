@@ -13,4 +13,5 @@ npm i g3l -g
     -b, --new_branch <branch>  Git push origin as a new branch
     -p, --publish              After process publish repo as a npm package
     -i, --init                 Git init
-    -v, --verbose              Show process
+    -s, --status               Git status
+    -c, --create               Create github repository
