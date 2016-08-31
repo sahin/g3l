@@ -23,9 +23,10 @@ program
 .option('-i, --init', 'Git init')
 .option('-s, --status', 'Git status')
 .option('-c, --create', 'Create github repository')
+.option('--clone', 'Clone github repository')
 .option('-u, --update', 'Self update')
 .parse(process.argv);
-// 
+//
 // console.log(process.argv);
 //
 // if (process.argv.length === 1 || process.argv.length === 2) {
@@ -147,6 +148,16 @@ var commands = [
     boolean: true,
     function: "create",
     priority: 90,
+    containRequiredParam: false,
+    params: [],
+  },
+  {
+    name: "clone",
+    command: "Git clone existing repository",
+    description: "Git clone existing repository",
+    boolean: true,
+    function: "clone",
+    priority: 89,
     containRequiredParam: false,
     params: [],
   },
@@ -304,5 +315,54 @@ function create(command) {
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
        })
        .catch((err) => {reject(err);});
+  });
+}
+
+function clone(command) {
+  return new Promise(function(resolve, reject) {
+      var questions = [
+        {
+          type: 'input',
+          name: 'url',
+          message: 'What\'s your git repository url?',
+          validate: function (value) {
+            if(value.indexOf('.git') > -1 && value.trim().length > 1) {
+              return true;
+            }
+
+            return 'Please enter a valid git repository';
+          }
+        },
+        {
+          type: 'input',
+          name: 'name',
+          message: 'Which name you prefer for cloned repository directory name?',
+          validate: function (value) {
+            if (value.trim().length > 1) {
+              return true;
+            }
+            return 'Please enter a valid name repository';
+          }
+        },
+      ];
+
+      inquirer.prompt(questions).then(function (answers) {
+        var loader = [
+          '/ Cloning..',
+          '| Cloning...',
+          '\\ Cloning....',
+          '- Cloning...'
+        ];
+        var i = 4;
+        var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
+
+        setInterval(function () {
+          ui.updateBottomBar(loader[i++ % 4]);
+        }, 300);
+
+        E(`git clone ${answers.url} && cd ${answers.name}`)
+            .then((value) => {ui.updateBottomBar('Clone done!\n');})
+            .catch((err) => {ui.updateBottomBar('Clone error!\n', err);reject(err)});
+      });
   });
 }
