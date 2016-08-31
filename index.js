@@ -360,7 +360,7 @@ function clone(command) {
           ui.updateBottomBar(loader[i++ % 4]);
         }, 300);
 
-        E(`git clone ${answers.url} && cd ${answers.name}`)
+        E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
             .then((value) => {ui.updateBottomBar('Clone done!\n');})
             .catch((err) => {ui.updateBottomBar('Clone error!\n', err);reject(err)});
       });
