@@ -13,8 +13,8 @@ var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
 updateNotifier({pkg}).notify();
 var CR = require('cr34t3');
-var cmdify = require('cmdify');
 var inquirer = require('inquirer');
+var cmdify = require('cmdify');
 
 // var loader = [
 //   '/ Installing.',
@@ -36,6 +36,7 @@ program
 .option('-i, --init', 'Git init')
 .option('-s, --status', 'Git status')
 .option('-c, --create', 'Create github repository')
+.option('-u, --update', 'Self update')
 .parse(process.argv);
 
 var commands = [
@@ -106,6 +107,16 @@ var commands = [
     priority: 90,
     containRequiredParam: false,
     params: [],
+  },
+  {
+    name: "update",
+    command: "Self update",
+    description: "Self update",
+    boolean: true,
+    function: "update",
+    priority: 1,
+    containRequiredParam: false,
+    params: [],
   }
 ];
 
@@ -151,12 +162,36 @@ function init(command) {
     B()
       .then((value) => {resolve('Git already initialized this directory')})
       .catch((err) => {
-        var prompt = require('prompt');
-        prompt.start();
-        prompt.get([{name:'url', required: true, description: "Git remote url: Ex. https://github.com/cagataycali/br4anch.git"}], function (err, result) {
-          E(`git init && git remote add origin ${result.url} && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
-            .then((value) => {resolve('Git initialized.')})
-            .catch((err) => {bugsnag.notify(new Error(err));reject(err)});
+
+        var questions = [
+          {
+            type: 'input',
+            name: 'url',
+            message: 'What\'s your git repository url?'
+          }
+        ];
+
+        inquirer.prompt(questions).then(function (answers) {
+          var loader = [
+            '/ Initializing.',
+            '| Initializing..',
+            '\\ Initializing...',
+            '- Initializing..'
+          ];
+          var i = 4;
+          var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
+
+          setInterval(function () {
+            ui.updateBottomBar(loader[i++ % 4]);
+          }, 300);
+
+          E(`git init && git remote add origin ${answers.url} && git remote show origin && git symbolic-ref HEAD && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
+              .then((value) => {
+                B()
+                  .then((out) => {ui.updateBottomBar('Init done!\n');resolve(out)})
+                  .catch((err) => {ui.updateBottomBar('Init error!\n', err);reject(err)})
+              })
+              .catch((err) => {ui.updateBottomBar('Init error!\n', err);reject(err)});
         });
     });
   });
@@ -192,6 +227,34 @@ function status(command) {
     E('git status')
      .then((value) => {resolve(value);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
+  });
+}
+
+function update(command) {
+  return new Promise(function(resolve, reject) {
+    var cmdify = require('cmdify');
+
+    var loader = [
+      '/ Updating g3l..',
+      '| Updating g3l...',
+      '\\ Updating g3l....',
+      '- Updating g3l...'
+    ];
+    var i = 4;
+    var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
+
+    setInterval(function () {
+      ui.updateBottomBar(loader[i++ % 4]);
+    }, 300);
+
+    var spawn = require('child_process').spawn;
+
+    var cmd = spawn(cmdify('npm'), ['-g', 'install', 'g3l'], {stdio: 'pipe'});
+    cmd.stdout.pipe(ui.log);
+    cmd.on('close', function () {
+      ui.updateBottomBar(colors.green('Installation done!\n'));
+      process.exit();
+    });
   });
 }
 
