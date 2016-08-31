@@ -13,6 +13,21 @@ var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
 updateNotifier({pkg}).notify();
 var CR = require('cr34t3');
+var cmdify = require('cmdify');
+var inquirer = require('inquirer');
+
+// var loader = [
+//   '/ Installing.',
+//   '| Installing..',
+//   '\\ Installing...',
+//   '- Installing..'
+// ];
+// var i = 4;
+// var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
+//
+// setInterval(function () {
+//   ui.updateBottomBar(loader[i++ % 4]);
+// }, 300);
 
 program
 .option('-m, --message <message>', 'Commit message')
