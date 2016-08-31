@@ -25,6 +25,61 @@ program
 .option('-c, --create', 'Create github repository')
 .option('-u, --update', 'Self update')
 .parse(process.argv);
+// 
+// console.log(process.argv);
+//
+// if (process.argv.length === 1 || process.argv.length === 2) {
+//
+// console.log(colors.green('Hi, welcome to g3l helper wizard!'));
+//
+// var questions = [
+//   {
+//     type: 'checkbox',
+//     message: 'Select commands',
+//     name: 'commands',
+//     choices: [
+//       new inquirer.Separator(' = The Commands = '),
+//       {
+//         name: 'message',
+//       },
+//       {
+//         name: 'new_branch',
+//       },
+//       {
+//         name: 'status',
+//       },
+//       {
+//         name: 'publish'
+//       },
+//       new inquirer.Separator(' = The extras = '),
+//       {
+//         name: 'create'
+//       },
+//       {
+//         name: 'init'
+//       },
+//       {
+//         name: 'update'
+//       },
+//       {
+//         name: 'contribute',
+//         disabled: 'I\' didn\'t write code 4 this now dude, maybe you can ?'
+//       },
+//     ],
+//     validate: function (answer) {
+//       if (answer.length < 1) {
+//         return 'You must choose at least one command.';
+//       }
+//       return true;
+//     }
+//   }
+// ];
+//
+// inquirer.prompt(questions).then(function (answers) {
+//   console.log(JSON.stringify(answers, null, '  '));
+// });
+//
+// }
 
 var commands = [
   {
@@ -128,7 +183,7 @@ function run(array) {
          }
        }
      });
-     resolve(colors.inverse('Running process started \n\n'))
+    //  resolve(colors.inverse('Running process started \n\n'))
   });
 }
 
@@ -234,7 +289,7 @@ function update(command) {
     var cmd = spawn(cmdify('npm'), ['-g', 'install', 'g3l'], {stdio: 'pipe'});
     cmd.stdout.pipe(ui.log);
     cmd.on('close', function () {
-      ui.updateBottomBar(colors.green('Installation done!\n'));
+      ui.updateBottomBar(colors.green('G3l updated successfully!\n'));
       process.exit();
     });
   });
