@@ -1,3 +1,5 @@
+[![Package Quality](http://npm.packagequality.com/badge/g3l.png)](http://packagequality.com/#?package=g3l)
+
 # Installing
 
 ```
