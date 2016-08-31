@@ -1,4 +1,6 @@
-[![Package Quality](http://npm.packagequality.com/badge/g3l.png)](http://packagequality.com/#?package=g3l)
+# Git is easy, github cli is easy but g3l easiest git cli in the w0rld!
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 # Installing
 

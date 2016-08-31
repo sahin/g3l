@@ -16,19 +16,6 @@ var CR = require('cr34t3');
 var inquirer = require('inquirer');
 var cmdify = require('cmdify');
 
-// var loader = [
-//   '/ Installing.',
-//   '| Installing..',
-//   '\\ Installing...',
-//   '- Installing..'
-// ];
-// var i = 4;
-// var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
-//
-// setInterval(function () {
-//   ui.updateBottomBar(loader[i++ % 4]);
-// }, 300);
-
 program
 .option('-m, --message <message>', 'Commit message')
 .option('-b, --new_branch <branch>', 'Git push origin as a new branch')
@@ -153,10 +140,6 @@ run(commands)
   .then((value) => {console.log(value);})
   .catch((err) => {console.log(err);})
 
-
-  /* ---------- Functions ----------  */
-
-
 function init(command) {
   return new Promise(function(resolve, reject) {
     B()
@@ -196,7 +179,6 @@ function init(command) {
     });
   });
 }
-
 
 function branch(command) {
   return new Promise(function(resolve, reject) {
@@ -269,5 +251,3 @@ function create(command) {
        .catch((err) => {reject(err);});
   });
 }
-
-  /* ---------- Functions ----------  */
