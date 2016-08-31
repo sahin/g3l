@@ -361,7 +361,7 @@ function clone(command) {
         }, 300);
 
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
-            .then((value) => {ui.updateBottomBar('Clone done!\n');})
+            .then((value) => {ui.updateBottomBar('Clone done!\n');resolve('Clone done!')})
             .catch((err) => {ui.updateBottomBar('Clone error!\n', err);reject(err)});
       });
   });
