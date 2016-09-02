@@ -32,5 +32,4 @@ Looking Cool?
 ![Demo](images/feature.png)
 ![Demo](images/demo.png)
 
-![](http://cagataycali.xyz/images/demo.gif)
 ![](images/demo.gif)
