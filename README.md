@@ -28,3 +28,8 @@ Looking Cool?
 * Awesome commits without think which emoji fit well!
 ![Awesome commits without think which emoji fit well!](images/fitwell.png)
 ![Awesome commits without think which emoji fit well!](images/fitwell2.png)
+![Demo](images/init.png)
+![Demo](images/feature.png)
+![Demo](images/demo.png)
+
+![GIF](http://cagataycali.xyz/images/demo.gif)
