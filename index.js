@@ -6,6 +6,7 @@ bugsnag.register("ae3b5df916a42d652f9a9dd8c34009bd");
 var B = require('br4nch');
 var _ = require('underscore');
 var C = require('c0mm1t');
+var m4g1c = require('m4g1c');
 var async = require('async');
 var colors = require('colors');
 var E = require('3x3c');
@@ -256,9 +257,13 @@ function branch(command) {
 
 function message(command) {
   return new Promise(function(resolve, reject) {
-    C(':octocat: ' + program.message + ' :sparkles:')
-    .then(function(value) {resolve(value);})
-    .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
+    m4g1c(program.message, false)
+      .then((emojis) => {
+        C(':octocat: ' + program.message + ' ' + emojis)
+        .then(function(value) {resolve(value);})
+        .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
+      })
+      .catch((err) => {bugsnag.notify(new Error(program.message));})
   });
 }
 
