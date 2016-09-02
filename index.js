@@ -256,7 +256,7 @@ function branch(command) {
 
 function message(command) {
   return new Promise(function(resolve, reject) {
-    C(program.message)
+    C(':octocat: ' + program.message + ' :sparkles:')
     .then(function(value) {resolve(value);})
     .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
   });
