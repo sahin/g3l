@@ -22,4 +22,6 @@ npm i g3l -g
 
 
 Looking Cool?
-![Awesome commits without think which emoji fit well!](images/fitwell.png)
+
+* Awesome commits without think which emoji fit well!
+  * ![Awesome commits without think which emoji fit well!](images/fitwell.png)
