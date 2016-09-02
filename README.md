@@ -25,14 +25,11 @@ npm i g3l -g
 
 Looking Cool?
 
-* Awesome commits without think which emoji fit well!
+Awesome commits without think which emoji fit well!
 ![Awesome commits without think which emoji fit well!](images/fitwell.png)
 ![Awesome commits without think which emoji fit well!](images/fitwell2.png)
+![Gitlab](images/gitlab.png)
 ![Demo](images/init.png)
 ![Demo](images/feature.png)
 ![Demo](images/demo.png)
-
 ![](images/demo.gif)
-
-Also working in gitlab.
-![Gitlab](images/gitlab.png)
