@@ -295,8 +295,11 @@ function clone(command) {
           }
         },
       ];
+
+      inquirer.prompt(questions).then(function (answers) {
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
-            .then((value) => {resolve('Clone done!')})
-            .catch((err) => {reject(err)});
+            .then((value) => {ui.updateBottomBar('Clone done!\n');resolve('Clone done!')})
+            .catch((err) => {ui.updateBottomBar('Clone error!\n', err);reject(err)});
+      });
   });
 }
