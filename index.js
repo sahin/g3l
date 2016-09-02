@@ -298,6 +298,5 @@ function clone(command) {
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
             .then((value) => {resolve('Clone done!')})
             .catch((err) => {reject(err)});
-      });
   });
 }
