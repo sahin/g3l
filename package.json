@@ -15,7 +15,11 @@
     "git",
     "commit",
     "npm",
-    "node"
+    "node",
+    "gel",
+    "git commit",
+    "git cli",
+    "git cli tool"
   ],
   "author": "Çağatay Çalı",
   "license": "ISC",

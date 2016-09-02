@@ -27,61 +27,6 @@ program
 .option('--clone', 'Clone github repository')
 .option('-u, --update', 'Self update')
 .parse(process.argv);
-//
-// console.log(process.argv);
-//
-// if (process.argv.length === 1 || process.argv.length === 2) {
-//
-// console.log(colors.green('Hi, welcome to g3l helper wizard!'));
-//
-// var questions = [
-//   {
-//     type: 'checkbox',
-//     message: 'Select commands',
-//     name: 'commands',
-//     choices: [
-//       new inquirer.Separator(' = The Commands = '),
-//       {
-//         name: 'message',
-//       },
-//       {
-//         name: 'new_branch',
-//       },
-//       {
-//         name: 'status',
-//       },
-//       {
-//         name: 'publish'
-//       },
-//       new inquirer.Separator(' = The extras = '),
-//       {
-//         name: 'create'
-//       },
-//       {
-//         name: 'init'
-//       },
-//       {
-//         name: 'update'
-//       },
-//       {
-//         name: 'contribute',
-//         disabled: 'I\' didn\'t write code 4 this now dude, maybe you can ?'
-//       },
-//     ],
-//     validate: function (answer) {
-//       if (answer.length < 1) {
-//         return 'You must choose at least one command.';
-//       }
-//       return true;
-//     }
-//   }
-// ];
-//
-// inquirer.prompt(questions).then(function (answers) {
-//   console.log(JSON.stringify(answers, null, '  '));
-// });
-//
-// }
 
 var commands = [
   {
