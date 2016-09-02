@@ -8,7 +8,7 @@
 npm i g3l -g
 ```
 
-#  Usage: g3l [options]
+#  g3l [options]
 
   Options:
 
@@ -19,9 +19,12 @@ npm i g3l -g
     -i, --init                 Git init
     -s, --status               Git status
     -c, --create               Create github repository
+    --clone                    Clone github repository
+    -u, --update               Self update
 
 
 Looking Cool?
 
 * Awesome commits without think which emoji fit well!
-  * ![Awesome commits without think which emoji fit well!](images/fitwell.png)
+![Awesome commits without think which emoji fit well!](images/fitwell.png)
+![Awesome commits without think which emoji fit well!](images/fitwell2.png)
