@@ -19,3 +19,7 @@ npm i g3l -g
     -i, --init                 Git init
     -s, --status               Git status
     -c, --create               Create github repository
+
+
+Looking Cool?
+![Awesome commits without think which emoji fit well!](images/fitwell.png)
