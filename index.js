@@ -140,7 +140,7 @@ function run(array) {
          }
        }
      });
-    //  resolve(colors.inverse('Running process started \n\n'))
+     resolve(colors.inverse('Running process started \n\n'))
   });
 }
 
