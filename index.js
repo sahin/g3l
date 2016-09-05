@@ -217,7 +217,7 @@ function message(command) {
           })
           .catch((err) => {bugsnag.notify(new Error(program.message));})
       })
-      .catch((err) => {console.log(err);})
+      .catch((err) => {bugsnag.notify(err);})
 
   });
 }
