@@ -311,7 +311,6 @@ function clone(command) {
           }
         },
       ];
-
       inquirer.prompt(questions).then(function (answers) {
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
             .then((value) => {ui.updateBottomBar('Clone done!\n');resolve('Clone done!')})
