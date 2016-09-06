@@ -275,7 +275,6 @@ function clone(command) {
             if(value.indexOf('.git') > -1 && value.trim().length > 1) {
               return true;
             }
-
             return 'Please enter a valid git repository';
           }
         },
