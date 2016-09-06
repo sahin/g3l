@@ -202,33 +202,9 @@ function branch(command) {
 
 function message(command) {
   return new Promise(function(resolve, reject) {
-    // C(program.message)
-    //   .then(function(value) {resolve(value);})
-    //   .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
-    var premoji = '';
-    E('git remote show origin')
-      .then((value) => {
-        if (value.indexOf('github.com') !== -1) {
-          premoji = ':octocat: '
-        }
-        m4g1c(program.message, false)
-          .then((emojis) => {
-            C(premoji + program.message + ' ' + emojis)
-              .then(function(value) {resolve(value);})
-              .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
-          })
-          .catch((err) => {
-            console.log(err);
-            bugsnag.notify(new Error(program.message));
-            reject(err);
-          })
-      })
-      .catch((err) => {
-        console.log(err);
-        bugsnag.notify(err);
-        reject(err);
-      });
-
+    C(program.message)
+      .then(function(value) {resolve(value);})
+      .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
   });
 }
 
