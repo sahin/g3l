@@ -73,7 +73,7 @@ var commands = [
     description: "Npm publish easily",
     boolean: true,
     function: "publish",
-    priority: 90,
+    priority: 80,
     containRequiredParam: false,
     params: [],
   },
