@@ -215,9 +215,15 @@ function message(command) {
             .then(function(value) {resolve(value);})
             .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
           })
-          .catch((err) => {bugsnag.notify(new Error(program.message));})
+          .catch((err) => {
+            bugsnag.notify(new Error(program.message));
+            reject(err);
+          })
       })
-      .catch((err) => {bugsnag.notify(err);})
+      .catch((err) => {
+        bugsnag.notify(err);
+        reject(err);
+    })
 
   });
 }

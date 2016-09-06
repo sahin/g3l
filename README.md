@@ -33,3 +33,7 @@ Awesome commits without think which emoji fit well!
 ![Demo](images/feature.png)
 ![Demo](images/demo.png)
 ![](images/demo.gif)
+
+Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
+
+Made with :heart:
