@@ -1,6 +1,7 @@
 # Git is easy, github cli is easy but g3l easiest git cli in the w0rld!
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![npm version](https://badge.fury.io/js/g3l.svg)](https://badge.fury.io/js/g3l)
 
 # Installing
 
@@ -35,5 +36,8 @@ Awesome commits without think which emoji fit well!
 ![](images/demo.gif)
 
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
+
+# Todos:
+ Improve init && create.
 
 Made with :heart:
