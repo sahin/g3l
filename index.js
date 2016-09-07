@@ -28,6 +28,10 @@ program
 .option('-u, --update', 'Self update')
 .parse(process.argv);
 
+function log(message) {
+  console.log(emoji.emojify(':zap:'), colors.underline.white('Running') ,colors.cyan(message));
+}
+
 var commands = [
   {
     name: "new_branch",
@@ -123,15 +127,15 @@ function run(array) {
   return new Promise(function(resolve, reject) {
      array.forEach(function(piece) {
        if (eval('program.'+piece.name)) {
-         console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name), emoji.emojify(":dark_sunglasses: \n"));
+        //  console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name), emoji.emojify(":dark_sunglasses: \n"));
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
               // console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
-              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
+              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})');
             } else {
               piece.params.forEach(function(param) {
                 // console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
-                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
          } else {
@@ -140,7 +144,8 @@ function run(array) {
          }
        }
      });
-     resolve(colors.inverse('Running process started \n\n'))
+    //  resolve(colors.inverse('Running process started \n\n'))
+     resolve('\n')
   });
 }
 
@@ -194,6 +199,7 @@ function init(command) {
 
 function branch(command) {
   return new Promise(function(resolve, reject) {
+    log('Checkout new branch');
     E(`git checkout -b ${program.new_branch}`)
      .then((value) => {resolve(`New branch created: ${program.new_branch}`);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err)});
@@ -202,6 +208,7 @@ function branch(command) {
 
 function message(command) {
   return new Promise(function(resolve, reject) {
+    log('Git commit and push proccess');
     C(program.message)
       .then(function(value) {resolve('Git committed successfully.');})
       .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
@@ -210,6 +217,7 @@ function message(command) {
 
 function publish(command) {
   return new Promise(function(resolve, reject) {
+    log('Version patch and publish as npm package');
     E('npm version patch && npm publish')
      .then((value) => {resolve(value);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
@@ -218,6 +226,7 @@ function publish(command) {
 
 function status(command) {
   return new Promise(function(resolve, reject) {
+    log('Git status');
     E('git status')
      .then((value) => {resolve(value);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
@@ -226,6 +235,8 @@ function status(command) {
 
 function update(command) {
   return new Promise(function(resolve, reject) {
+    log('g3l updater');
+
     var cmdify = require('cmdify');
 
     var loader = [
