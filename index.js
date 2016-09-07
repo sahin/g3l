@@ -119,14 +119,6 @@ var commands = [
   }
 ];
 
-function sleep(ms) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function () {
-      resolve('Done', ms);
-    }, ms);
-  });
-}
-
 function run(array) {
   return new Promise(function(resolve, reject) {
      array.forEach(function(piece) {
@@ -134,11 +126,11 @@ function run(array) {
          console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name), emoji.emojify(":dark_sunglasses: \n"));
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
+              // console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
               eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
             } else {
               piece.params.forEach(function(param) {
-                console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
+                // console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
                 eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
@@ -211,7 +203,7 @@ function branch(command) {
 function message(command) {
   return new Promise(function(resolve, reject) {
     C(program.message)
-      .then(function(value) {resolve(value);})
+      .then(function(value) {resolve('Git committed successfully.');})
       .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
   });
 }
