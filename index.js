@@ -129,15 +129,14 @@ function run(array) {
        if (eval('program.'+piece.name)) {
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})');
+              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})');
             } else {
               piece.params.forEach(function(param) {
-                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})');
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})');
               });
             }
          } else {
-           console.log(piece.function + '(' + piece + ').then((value) => {console.log(value);}).catch((err) => {console.log(err);})');
-           process.exit(1);
+           process.exit();
          }
        }
      });
