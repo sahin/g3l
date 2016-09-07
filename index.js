@@ -129,24 +129,19 @@ function sleep(ms) {
 
 function run(array) {
   return new Promise(function(resolve, reject) {
-     array.forEach(function(piece, callback) {
+     array.forEach(function(piece) {
        if (eval('program.'+piece.name)) {
          console.log(emoji.emojify(':zap:') ,'Running:'.underline, colors.rainbow(piece.name), emoji.emojify(":dark_sunglasses: \n"));
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              // console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
-              // eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
+              console.log(emoji.emojify(':zap:') ,colors.green(piece.name));
+              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
             } else {
               piece.params.forEach(function(param) {
-                // console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
-                // eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
+                console.log(emoji.emojify(':zap:') ,`${colors.green(param.name)}: ${eval('program.'+piece.name).inverse}`);
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.rainbow(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
-            console.log(piece);
-            sleep(2000).then((value) => {
-              console.log(value);
-              callback();
-            })
          } else {
            console.log(piece.function + '(' + piece + ').then((value) => {console.log(value);}).catch((err) => {console.log(err);})');
            process.exit(1);
