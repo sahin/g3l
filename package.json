@@ -1,6 +1,6 @@
 {
   "name": "g3l",
-  "version": "4.0.49",
+  "version": "4.0.50",
   "description": "Git is easy, github cli is easy but g3l easiest git cli in the w0rld!",
   "main": "index.js",
   "repository": {
