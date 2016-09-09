@@ -224,7 +224,6 @@ function publish(command) {
 function status(command) {
   return new Promise(function(resolve, reject) {
     S();
-    // log('Git status');
     // E('git status')
     //  .then((value) => {resolve(value);})
     //  .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
