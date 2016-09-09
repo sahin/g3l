@@ -226,6 +226,7 @@ function create(command) {
      CR()
        .then((value) => {
          opn(value);
+         log('Your repository url: ', value);
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
        }).catch((err) => {reject(err);});
   });
