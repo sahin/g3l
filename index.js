@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 var program = require('commander');
 var emoji = require('node-emoji');
-var bugsnag = require("bugsnag");
-bugsnag.register("ae3b5df916a42d652f9a9dd8c34009bd");
 var B = require('br4nch');
 var _ = require('underscore');
 var C = require('c0mm1t');
@@ -17,7 +15,6 @@ var CR = require('cr34t3');
 var inquirer = require('inquirer');
 var cmdify = require('cmdify');
 var S = require('./lib/git-heads');
-var exec = require('child_process').exec;
 
 program
 .option('-m, --message <message>', 'Commit message')
@@ -264,8 +261,7 @@ function create(command) {
          console.log(value);
          console.log(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
-       })
-       .catch((err) => {reject(err);});
+       }).catch((err) => {reject(err);});
   });
 }
 
