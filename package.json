@@ -1,6 +1,6 @@
 {
   "name": "g3l",
-  "version": "5.0.23",
+  "version": "6.0.0",
   "description": "Git is easy, github cli is easy but g3l easiest git cli in the w0rld!",
   "main": "index.js",
   "repository": {
@@ -37,7 +37,7 @@
     "cmdify": "0.0.4",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "cr34t3": "^1.0.30",
+    "cr34t3": "^1.0.31",
     "inquirer": "^1.1.3",
     "m4g1c": "^1.0.8",
     "node-emoji": "^1.4.1",
