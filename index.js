@@ -10,11 +10,11 @@ var colors = require('colors');
 var E = require('3x3c');
 var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
-updateNotifier({pkg}).notify();
 var CR = require('cr34t3');
 var inquirer = require('inquirer');
-var cmdify = require('cmdify');
 var S = require('./lib/git-heads');
+var opn = require('opn');
+updateNotifier({pkg}).notify();
 
 program
 .option('-m, --message <message>', 'Commit message')
@@ -166,26 +166,13 @@ function init(command) {
         ];
 
         inquirer.prompt(questions).then(function (answers) {
-          var loader = [
-            '/ Initializing.',
-            '| Initializing..',
-            '\\ Initializing...',
-            '- Initializing..'
-          ];
-          var i = 4;
-          var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
-
-          setInterval(function () {
-            ui.updateBottomBar(loader[i++ % 4]);
-          }, 300);
-
-          E(`git init && git remote add origin ${answers.url} && git remote show origin && git symbolic-ref HEAD && echo "# Hi" >> README.md && git add . && git commit -m "Hi" && git push -u origin master`)
+          E(`git init && git remote add origin ${answers.url} && git remote show origin && git symbolic-ref HEAD && echo "# This github repository created automaticly with g3l! :zap:" >> README.md && git add . && git commit -m "Hi :zap:" && git push -u origin master`)
               .then((value) => {
                 B()
-                  .then((out) => {ui.updateBottomBar('Init done!\n');resolve(out)})
-                  .catch((err) => {ui.updateBottomBar('Init error!\n', err);reject(err)})
+                  .then((out) => {resolve(out)})
+                  .catch((err) => {reject(err)})
               })
-              .catch((err) => {ui.updateBottomBar('Init error!\n', err);reject(err)});
+              .catch((err) => {reject(err)});
         });
     });
   });
@@ -221,35 +208,15 @@ function publish(command) {
 function status(command) {
   return new Promise(function(resolve, reject) {
     S();
+    resolve();
   });
 }
 
 function update(command) {
   return new Promise(function(resolve, reject) {
-    log('g3l updater');
-
-    var cmdify = require('cmdify');
-
-    var loader = [
-      '/ Updating g3l..',
-      '| Updating g3l...',
-      '\\ Updating g3l....',
-      '- Updating g3l...'
-    ];
-    var i = 4;
-    var ui = new inquirer.ui.BottomBar({bottomBar: loader[i % 4]});
-
-    setInterval(function () {
-      ui.updateBottomBar(loader[i++ % 4]);
-    }, 300);
-
-    var spawn = require('child_process').spawn;
-
-    var cmd = spawn(cmdify('npm'), ['-g', 'install', 'g3l'], {stdio: 'pipe'});
-    cmd.stdout.pipe(ui.log);
-    cmd.on('close', function () {
-      ui.updateBottomBar(colors.green('G3l updated successfully!\n'));
-      process.exit();
+    log('g3l update process started.')
+    spawn( "npm", [ "i", `-g`, 'g3l'], function( error, stdout ) {
+        resolve('g3l updated successfully.')
     });
   });
 }
@@ -258,8 +225,7 @@ function create(command) {
   return new Promise(function(resolve, reject) {
      CR()
        .then((value) => {
-         console.log(value);
-         console.log(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
+         opn(value);
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
        }).catch((err) => {reject(err);});
   });
@@ -293,8 +259,8 @@ function clone(command) {
       ];
       inquirer.prompt(questions).then(function (answers) {
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
-            .then((value) => {ui.updateBottomBar('Clone done!\n');resolve('Clone done!')})
-            .catch((err) => {ui.updateBottomBar('Clone error!\n', err);reject(err)});
+            .then((value) => {resolve('Clone done!')})
+            .catch((err) => {reject(err)});
       });
   });
 }
