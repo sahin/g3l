@@ -16,6 +16,8 @@ updateNotifier({pkg}).notify();
 var CR = require('cr34t3');
 var inquirer = require('inquirer');
 var cmdify = require('cmdify');
+var S = require('./lib/git-heads');
+var exec = require('child_process').exec;
 
 program
 .option('-m, --message <message>', 'Commit message')
@@ -221,10 +223,11 @@ function publish(command) {
 
 function status(command) {
   return new Promise(function(resolve, reject) {
-    log('Git status');
-    E('git status')
-     .then((value) => {resolve(value);})
-     .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
+    S();
+    // log('Git status');
+    // E('git status')
+    //  .then((value) => {resolve(value);})
+    //  .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
   });
 }
 
