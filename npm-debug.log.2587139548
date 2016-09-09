@@ -1,0 +1,127 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.2.1/bin/node',
+1 verbose cli   '/Users/cagatay/.npm-packages/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.1
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/cagatay/Apify/g3l',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/cagatay/.npm/g3l/5.0.19/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/cagatay/.npm correctMkdir not in flight; initializing
+10 info lifecycle g3l@5.0.19~prepublish: g3l@5.0.19
+11 silly lifecycle g3l@5.0.19~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/cagatay/.npm/g3l/5.0.19/package.tgz',
+12 verbose tar pack   '/Users/cagatay/Apify/g3l' ]
+13 verbose tarball /Users/cagatay/.npm/g3l/5.0.19/package.tgz
+14 verbose folder /Users/cagatay/Apify/g3l
+15 verbose addLocalTarball adding from inside cache /Users/cagatay/.npm/g3l/5.0.19/package.tgz
+16 verbose correctMkdir /Users/cagatay/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd g3l@5.0.19
+18 verbose afterAdd /Users/cagatay/.npm/g3l/5.0.19/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/cagatay/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/cagatay/.npm/g3l/5.0.19/package/package.json written
+21 silly publish { name: 'g3l',
+21 silly publish   version: '5.0.19',
+21 silly publish   description: 'Git is easy, github cli is easy but g3l easiest git cli in the w0rld!',
+21 silly publish   main: 'index.js',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/cagataycali/g3l.git' },
+21 silly publish   bin: { g3l: './index.js' },
+21 silly publish   keywords:
+21 silly publish    [ 'Git',
+21 silly publish      'git',
+21 silly publish      'commit',
+21 silly publish      'npm',
+21 silly publish      'node',
+21 silly publish      'gel',
+21 silly publish      'git commit',
+21 silly publish      'git cli',
+21 silly publish      'git cli tool' ],
+21 silly publish   author: { name: 'Çağatay Çalı' },
+21 silly publish   license: 'ISC',
+21 silly publish   bugs: { url: 'https://github.com/cagataycali/g3l/issues' },
+21 silly publish   homepage: 'https://github.com/cagataycali/g3l#readme',
+21 silly publish   dependencies:
+21 silly publish    { '1n1t': '^1.0.14',
+21 silly publish      '3x3c': '^1.0.2',
+21 silly publish      async: '^2.0.1',
+21 silly publish      br4nch: '^1.0.5',
+21 silly publish      c0mm1t: '^1.0.22',
+21 silly publish      'cli-table': '^0.3.1',
+21 silly publish      cmdify: '0.0.4',
+21 silly publish      colors: '^1.1.2',
+21 silly publish      commander: '^2.9.0',
+21 silly publish      cr34t3: '^1.0.27',
+21 silly publish      inquirer: '^1.1.3',
+21 silly publish      m4g1c: '^1.0.8',
+21 silly publish      'node-emoji': '^1.4.1',
+21 silly publish      prompt: '^1.0.0',
+21 silly publish      underscore: '^1.8.3',
+21 silly publish      'update-notifier': '^1.0.2' },
+21 silly publish   readme: '# Git is easy, github cli is easy but g3l easiest git cli in the w0rld!\n\n\n[![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)\n\n# Installing\n\n```\nnpm i g3l -g\n```\n\n#  g3l [options]\n\n  Options:\n\n    -h, --help                 output usage information\n    -m, --message <message>    Commit message\n    -b, --new_branch <branch>  Git push origin as a new branch\n    -p, --publish              After process publish repo as a npm package\n    -i, --init                 Git init\n    -s, --status               Git status\n    -c, --create               Create github repository\n    --clone                    Clone github repository\n    -u, --update               Self update\n\n\nLooking Cool?\n\nAwesome commits without think which emoji fit well!\n![Awesome commits without think which emoji fit well!](images/fitwell.png)\n![Awesome commits without think which emoji fit well!](images/fitwell2.png)\n![Gitlab](images/gitlab.png)\n![Demo](images/init.png)\n![Demo](images/feature.png)\n![Demo](images/demo.png)\n![](images/demo.gif)\n\nMaintenance & Development [Çağatay Çalı](http://github.com/cagataycali)\n\n# Todos:\n Improve init && create.\n\nMade with :heart:\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: 'a6e189cd361840021c7d131d338610d24228a234',
+21 silly publish   _id: 'g3l@5.0.19',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: 'd6956ec3df1eb386deb346c30fb790e3b59bcd55',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name g3l
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'g3l',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   name: 'g3l',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/g3l
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/cagatay/.npm/g3l/5.0.19/package.tgz
+30 verbose request uri https://registry.npmjs.org/g3l
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 11:29:59 PM
+33 verbose request using bearer token for auth
+34 verbose request id 6d2db9a51cd2c55d
+35 http request PUT https://registry.npmjs.org/g3l
+36 http 200 https://registry.npmjs.org/g3l
+37 verbose headers { 'content-type': 'application/json',
+37 verbose headers   'content-encoding': 'gzip',
+37 verbose headers   'cache-control': 'max-age=300',
+37 verbose headers   'transfer-encoding': 'chunked',
+37 verbose headers   'accept-ranges': 'bytes',
+37 verbose headers   date: 'Fri, 09 Sep 2016 06:30:34 GMT',
+37 verbose headers   via: '1.1 varnish',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'x-served-by': 'cache-ams4140-AMS',
+37 verbose headers   'x-cache': 'MISS',
+37 verbose headers   'x-cache-hits': '0',
+37 verbose headers   'x-timer': 'S1473402599.672247,VS0,VE34512',
+37 verbose headers   vary: 'Accept-Encoding' }
+38 verbose request invalidating /Users/cagatay/.npm/registry.npmjs.org/g3l on PUT
+39 info lifecycle g3l@5.0.19~publish: g3l@5.0.19
+40 verbose stack Error: write EPIPE
+40 verbose stack     at exports._errnoException (util.js:1007:11)
+40 verbose stack     at WriteWrap.afterWrite (net.js:793:14)
+41 verbose cwd /Users/cagatay/Apify/g3l
+42 error Darwin 16.0.0
+43 error argv "/usr/local/Cellar/node/6.2.1/bin/node" "/Users/cagatay/.npm-packages/bin/npm" "publish"
+44 error node v6.2.1
+45 error npm  v3.9.5
+46 error code EPIPE
+47 error errno EPIPE
+48 error syscall write
+49 error write EPIPE
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
