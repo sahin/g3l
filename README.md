@@ -1,5 +1,8 @@
 # Git is easy, github cli is easy but g3l easiest git cli in the w0rld!
 
+> The easiest git cli in the world g3l,
+> Downloaded 20 thousand times in two weeks!
+> I thank all those who use g3l.
 
 [![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
 
