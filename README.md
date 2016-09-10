@@ -3,6 +3,7 @@
 > The easiest git cli in the world g3l,
 > Downloaded 20 thousand times in two weeks!
 > I thank all those who use g3l.
+![Thank you!](images/thanks.png)
 
 [![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
 
