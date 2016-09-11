@@ -14,6 +14,7 @@ var CR = require('cr34t3');
 var inquirer = require('inquirer');
 var S = require('./lib/git-heads');
 var opn = require('opn');
+var isGitUrl = require('is-git-url');
 updateNotifier({pkg}).notify();
 
 program
@@ -159,21 +160,75 @@ function init(command) {
 
         var questions = [
           {
+            type: 'confirm',
+            name: 'commitWithInit',
+            message: 'Would you want commit and initial push with init?',
+            default: true
+          },
+          {
             type: 'input',
             name: 'url',
-            message: 'What\'s your git repository url?'
+            message: 'What\'s your git url?',
+            validate: function (value) {
+              if (isGitUrl(value)) {
+                return true;
+              }
+
+              return 'Please enter a git url.';
+            }
           }
         ];
 
-        // TODO @cagatay ask user to (y) (n)
-        
         inquirer.prompt(questions).then(function (answers) {
-          E(`git init && git remote add origin ${answers.url}`)
-              .then((value) => {
-                resolve('Project initted successfully but nothing committed yet.')
-              })
-              .catch((err) => {reject(err)});
+
+          var message = 'Horarayy my awesome repo has been first committed.!';
+          var isNew = true;
+          var url = answers.url;
+
+          if (answers.commitWithInit) {
+            var questions = [
+              {
+                type: 'input',
+                name: 'message',
+                message: 'What\'s your awesome hello new repo commit?',
+                validate: function (value) {
+                  if (value.trim().length > 0) {
+                    return true;
+                  }
+
+                  return 'Please write down your best comments...';
+                }
+              }
+            ];
+
+            inquirer.prompt(questions).then(function (outputs) {
+              message = outputs.message;
+              inquirer.prompt(questions).then(function (answers) {
+                E(`git init && git remote add origin ${answers.url}`)
+                    .then((value) => {
+                      var obj = {
+                        message: message,
+                        new: true,
+                      }
+                      C(obj)
+                        .then(function(value) {resolve('Git committed successfully.');})
+                        .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
+                    })
+                    .catch((err) => {reject(err)});
+                  });
+            });
+          } else {
+            inquirer.prompt(questions).then(function (answers) {
+              E(`git init && git remote add origin ${answers.url}`)
+                  .then((value) => {
+                    resolve('Project initted successfully but nothing committed yet.')
+                  })
+                  .catch((err) => {reject(err)});
+                });
+          }
         });
+
+
     });
   });
 }
