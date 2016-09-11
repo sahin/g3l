@@ -1,0 +1,67 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/6.2.1/bin/node',
+1 verbose cli   '/Users/cagatay/.npm-packages/bin/npm',
+1 verbose cli   'version',
+1 verbose cli   'patch' ]
+2 info using npm@3.9.5
+3 info using node@v6.2.1
+4 info git [ 'status', '--porcelain' ]
+5 info lifecycle g3l@6.0.13~preversion: g3l@6.0.13
+6 silly lifecycle g3l@6.0.13~preversion: no script for preversion, continuing
+7 verbose version.write data { name: 'g3l',
+7 verbose version.write   version: '6.0.13',
+7 verbose version.write   description: 'Git is easy, github cli is easy but g3l easiest git cli in the w0rld!',
+7 verbose version.write   main: 'index.js',
+7 verbose version.write   repository:
+7 verbose version.write    { type: 'git',
+7 verbose version.write      url: 'git+https://github.com/cagataycali/g3l.git' },
+7 verbose version.write   bin: { g3l: './index.js' },
+7 verbose version.write   keywords:
+7 verbose version.write    [ 'Git',
+7 verbose version.write      'git',
+7 verbose version.write      'commit',
+7 verbose version.write      'npm',
+7 verbose version.write      'node',
+7 verbose version.write      'gel',
+7 verbose version.write      'git commit',
+7 verbose version.write      'git cli',
+7 verbose version.write      'git cli tool' ],
+7 verbose version.write   author: 'Çağatay Çalı',
+7 verbose version.write   license: 'ISC',
+7 verbose version.write   bugs: { url: 'https://github.com/cagataycali/g3l/issues' },
+7 verbose version.write   homepage: 'https://github.com/cagataycali/g3l#readme',
+7 verbose version.write   dependencies:
+7 verbose version.write    { '1n1t': '^1.0.14',
+7 verbose version.write      '3x3c': '^1.0.2',
+7 verbose version.write      async: '^2.0.1',
+7 verbose version.write      br4nch: '^1.0.5',
+7 verbose version.write      c0mm1t: '^1.0.32',
+7 verbose version.write      'cli-table': '^0.3.1',
+7 verbose version.write      cmdify: '0.0.4',
+7 verbose version.write      colors: '^1.1.2',
+7 verbose version.write      commander: '^2.9.0',
+7 verbose version.write      cr34t3: '^1.0.31',
+7 verbose version.write      inquirer: '^1.1.3',
+7 verbose version.write      'is-git-url': '^0.2.3',
+7 verbose version.write      m4g1c: '^1.0.8',
+7 verbose version.write      'node-emoji': '^1.4.1',
+7 verbose version.write      opn: '^4.0.2',
+7 verbose version.write      prompt: '^1.0.0',
+7 verbose version.write      underscore: '^1.8.3',
+7 verbose version.write      'update-notifier': '^1.0.2' } } to package.json
+8 info lifecycle g3l@6.0.13~version: g3l@6.0.13
+9 verbose stack Error: write EPIPE
+9 verbose stack     at exports._errnoException (util.js:1007:11)
+9 verbose stack     at WriteWrap.afterWrite (net.js:793:14)
+10 verbose cwd /Users/cagatay/Apify/g3l
+11 error Darwin 16.0.0
+12 error argv "/usr/local/Cellar/node/6.2.1/bin/node" "/Users/cagatay/.npm-packages/bin/npm" "version" "patch"
+13 error node v6.2.1
+14 error npm  v3.9.5
+15 error code EPIPE
+16 error errno EPIPE
+17 error syscall write
+18 error write EPIPE
+19 error If you need help, you may report this error at:
+19 error     <https://github.com/npm/npm/issues>
+20 verbose exit [ 1, true ]
