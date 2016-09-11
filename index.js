@@ -165,12 +165,12 @@ function init(command) {
           }
         ];
 
+        // TODO @cagatay ask user to (y) (n)
+        
         inquirer.prompt(questions).then(function (answers) {
-          E(`git init && git remote add origin ${answers.url} && git remote show origin && git symbolic-ref HEAD && echo "# This github repository created automaticly with g3l! :zap:" >> README.md && git add . && git commit -m "Hi :zap:" && git push -u origin master`)
+          E(`git init && git remote add origin ${answers.url}`)
               .then((value) => {
-                B()
-                  .then((out) => {resolve(out)})
-                  .catch((err) => {reject(err)})
+                resolve('Project initted successfully but nothing committed yet.')
               })
               .catch((err) => {reject(err)});
         });
@@ -190,7 +190,11 @@ function branch(command) {
 function message(command) {
   return new Promise(function(resolve, reject) {
     log('Git commit and push proccess');
-    C(program.message)
+    var obj = {
+      message: program.message,
+      new: program.init,
+    }
+    C(obj)
       .then(function(value) {resolve('Git committed successfully.');})
       .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
   });
@@ -199,7 +203,8 @@ function message(command) {
 function publish(command) {
   return new Promise(function(resolve, reject) {
     log('Version patch and publish as npm package');
-    E('npm version patch && npm publish')
+    var isNew = program.init ? '' : 'npm version patch &&';
+    E(`${isNew} npm publish`)
      .then((value) => {resolve(value);})
      .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
   });
