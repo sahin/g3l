@@ -225,9 +225,10 @@ function create(command) {
   return new Promise(function(resolve, reject) {
      CR()
        .then((value) => {
-         opn(value);
          log('Your repository url: ', value);
+         opn(value);
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
+         process.exit();
        }).catch((err) => {reject(err);});
   });
 }
