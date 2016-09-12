@@ -28,11 +28,11 @@
   },
   "homepage": "https://github.com/cagataycali/g3l#readme",
   "dependencies": {
-    "1n1t": "^1.0.15",
+    "1n1t": "^1.0.16",
     "3x3c": "^1.0.2",
     "async": "^2.0.1",
     "br4nch": "^1.0.5",
-    "c0mm1t": "^1.0.34",
+    "c0mm1t": "^1.0.35",
     "cli-table": "^0.3.1",
     "cmdify": "0.0.4",
     "colors": "^1.1.2",
