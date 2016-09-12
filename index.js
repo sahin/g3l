@@ -4,6 +4,7 @@ var emoji = require('node-emoji');
 var B = require('br4nch');
 var _ = require('underscore');
 var C = require('c0mm1t');
+var I = require('1n1t');
 var m4g1c = require('m4g1c');
 var async = require('async');
 var colors = require('colors');
