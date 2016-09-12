@@ -1,6 +1,6 @@
 {
   "name": "g3l",
-  "version": "6.0.15",
+  "version": "7.0.0",
   "description": "Git is easy, github cli is easy but g3l easiest git cli in the w0rld!",
   "main": "index.js",
   "repository": {
@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/cagataycali/g3l#readme",
   "dependencies": {
-    "1n1t": "^1.0.14",
+    "1n1t": "^1.0.15",
     "3x3c": "^1.0.2",
     "async": "^2.0.1",
     "br4nch": "^1.0.5",
