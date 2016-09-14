@@ -1,0 +1,11 @@
+{
+  "app": {
+    "properties": {
+      "randomEmoji": true,
+      "verbose": true,
+    },
+    "bugsnag": {
+      "key": "xxxxxx"
+    }
+  }
+}

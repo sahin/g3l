@@ -17,6 +17,15 @@ var S = require('./lib/git-heads');
 var opn = require('opn');
 var isGitUrl = require('is-git-url');
 updateNotifier({pkg}).notify();
+var pathExists = require('path-exists');
+
+pathExists('~/.g3lfile.json')
+  .then(function(exists) {
+      console.log(exists);
+  });
+
+process.exit();
+
 
 program
 .option('-m, --message <message>', 'Commit message')
