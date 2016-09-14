@@ -41,7 +41,4 @@ Awesome commits without think which emoji fit well!
 
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
-# Todos:
- Improve init && create.
-
 Made with :heart:
