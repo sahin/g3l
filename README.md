@@ -31,6 +31,7 @@ npm i g3l -g
 Looking Cool?
 
 Awesome commits without think which emoji fit well!
+![Notifications](images/notification.png)
 ![Awesome commits without think which emoji fit well!](images/fitwell.png)
 ![Awesome commits without think which emoji fit well!](images/fitwell2.png)
 ![Gitlab](images/gitlab.png)
