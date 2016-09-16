@@ -1,6 +1,6 @@
 {
   "name": "g3l",
-  "version": "8.5.1",
+  "version": "8.9",
   "description": "Git is easy, github cli is easy but g3l easiest git cli in the w0rld!",
   "main": "index.js",
   "repository": {
@@ -29,10 +29,12 @@
   "homepage": "https://github.com/svtek/g3l#readme",
   "dependencies": {
     "1n1t": "^1.0.24",
+    "3x1st": "^1.0.3",
     "3x3c": "^1.0.2",
     "async": "^2.0.1",
     "br4nch": "^1.0.5",
     "c0mm1t": "^1.0.41",
+    "cl0n3": "^1.0.0",
     "cli-table": "^0.3.1",
     "cmdify": "0.0.4",
     "colors": "^1.1.2",
@@ -42,8 +44,8 @@
     "is-git-url": "^0.2.3",
     "m4g1c": "^1.0.10",
     "node-emoji": "^1.4.1",
+    "node-notifier": "^4.6.1",
     "opn": "^4.0.2",
-    "path-exists": "^3.0.0",
     "prompt": "^1.0.0",
     "underscore": "^1.8.3",
     "update-notifier": "^1.0.2"

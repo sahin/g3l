@@ -16,6 +16,7 @@ var inquirer = require('inquirer');
 var S = require('./lib/git-heads');
 var opn = require('opn');
 var isGitUrl = require('is-git-url');
+var notify = require('./lib/Notify');
 updateNotifier({pkg}).notify();
 
 program
@@ -123,14 +124,13 @@ var commands = [
     params: [],
   }
 ];
-
 function run(array) {
   return new Promise(function(resolve, reject) {
      array.forEach(function(piece) {
        if (eval('program.'+piece.name)) {
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})');
+              eval(piece.function + '(' + JSON.stringify(piece) + `).then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})`);
             } else {
               piece.params.forEach(function(param) {
                 eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})');
@@ -159,8 +159,14 @@ function branch(command) {
   return new Promise(function(resolve, reject) {
     log('Checkout new branch');
     E(`git checkout -b ${program.new_branch}`)
-     .then((value) => {resolve(`New branch created: ${program.new_branch}`);})
-     .catch((err) => {bugsnag.notify(new Error(err));reject(err)});
+     .then((value) => {
+       notify({title: 'g3l', 'message': `New branch created ${program.new_branch.trim()}`, 'status':'resolve'})
+       resolve(`New branch created: ${program.new_branch}`);
+     })
+     .catch((err) => {
+       notify({title: 'g3l', 'message': `New branch doesn\'t created as: ${program.new_branch.trim()}`, 'status':'reject'})
+       reject(err)
+     });
   });
 }
 
@@ -172,8 +178,14 @@ function message(command) {
       new: program.init,
     }
     C(obj)
-      .then(function(value) {resolve('Git committed successfully.');})
-      .catch(function(err) {bugsnag.notify(new Error(err));reject(err)});
+      .then(function(value) {
+        notify({title: 'g3l', 'message': 'Git committed successfully', 'status':'resolve'})
+        resolve('Git committed successfully.');
+      })
+      .catch(function(err) {
+        notify({title: 'g3l', 'message': `Git doesn\'t committed successfully.`, 'status':'reject'})
+        reject(err)
+      });
   });
 }
 
@@ -182,15 +194,22 @@ function publish(command) {
     log('Version patch and publish as npm package');
     var isNew = program.init ? '' : 'npm version patch &&';
     E(`${isNew} npm publish`)
-     .then((value) => {resolve(value);})
-     .catch((err) => {bugsnag.notify(new Error(err));reject(err);})
+     .then((value) => {
+       notify({title: 'g3l', 'message': 'Npm publish successfully', 'status':'resolve'})
+       resolve(value);
+     })
+     .catch((err) => {
+       notify({title: 'g3l', 'message': `Npm doesn\'t published successfully.`, 'status':'reject'})
+       reject(err);
+     })
   });
 }
 
 function status(command) {
   return new Promise(function(resolve, reject) {
+    notify({title: 'g3l', 'message': 'Git status fetched successfully', 'status':'resolve'})
     S();
-    resolve();
+    resolve('Git status fetched successfully');
   });
 }
 
@@ -198,6 +217,7 @@ function update(command) {
   return new Promise(function(resolve, reject) {
     log('g3l update process started.')
     spawn( "npm", [ "i", `-g`, 'g3l'], function( error, stdout ) {
+        notify({title: 'g3l', 'message': 'g3l update successfully', 'status':'resolve'})
         resolve('g3l updated successfully.')
     });
   });
@@ -209,9 +229,13 @@ function create(command) {
        .then((value) => {
          log('Your repository url: ', value);
          opn(value);
+         notify({title: 'g3l', 'message': 'g3l created github repository successfully', 'status':'resolve'})
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
          process.exit();
-       }).catch((err) => {reject(err);});
+       }).catch((err) => {
+         notify({title: 'g3l', 'message': `Repository doesn\'t created successfully.`, 'status':'reject'})
+         reject(err);
+       });
   });
 }
 
@@ -243,8 +267,14 @@ function clone(command) {
       ];
       inquirer.prompt(questions).then(function (answers) {
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
-            .then((value) => {resolve('Clone done!')})
-            .catch((err) => {reject(err)});
+            .then((value) => {
+              notify({title: 'g3l', 'message': 'Clone', 'subtitle': `Git clone successfully`, 'status':'resolve'})
+              resolve('Clone done!')
+            })
+            .catch((err) => {
+              notify({title: 'g3l', 'message': `Repository doesn\'t cloned successfully.`, 'status':'reject'})
+              reject(err)
+            });
       });
   });
 }
