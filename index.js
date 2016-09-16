@@ -19,6 +19,7 @@ var isGitUrl = require('is-git-url');
 var notify = require('./lib/Notify');
 updateNotifier({pkg}).notify();
 
+
 program
 .option('-m, --message <message>', 'Commit message')
 .option('-b, --new_branch <branch>', 'Git push origin as a new branch')
