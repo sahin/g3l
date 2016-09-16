@@ -1,10 +1,9 @@
 <h3 align="center">
   <img src="images/g3l_midnight.png" alt="g3l logo" />
-  <h4 style="text-align: center">
-    Git is easy, github cli is easy but <b>g3l</b> easiest git cli in the w0rld!
-  </h4>
 </h3>
-
+<h4 align="center">
+  Git is easy, github cli is easy but <b>g3l</b> easiest git cli in the w0rld!
+</h4>
 ============
 
 [![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
