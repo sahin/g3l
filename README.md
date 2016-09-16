@@ -1,11 +1,18 @@
-# Git is easy, github cli is easy but g3l easiest git cli in the w0rld!
+<h3 align="center">
+  <img src="images/g3l_midnight.png" alt="g3l logo" />
+</h3>
 
+g3l
+============
+
+
+# Git is easy, github cli is easy but g3l easiest git cli in the w0rld!
+[![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
 > The easiest git cli in the world g3l,
 > Downloaded 20 thousand times in two weeks!
 > I thank all those who use g3l.
 ![Thank you!](images/thanks.png)
 
-[![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
 
 # Installing
 
