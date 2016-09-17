@@ -6,6 +6,8 @@
 </h4>
 ============
 
+[![Version npm](https://img.shields.io/npm/v/g3l.svg?style=flat-square)](https://www.npmjs.com/package/g3l)[![npm Downloads](https://img.shields.io/npm/dm/g3l.svg?style=flat-square)](https://www.npmjs.com/package/g3l)[![Dependencies](https://img.shields.io/david/svtek/g3l.svg?style=flat-square)](https://david-dm.org/svtek/g3l.svg)
+
 [![NPM](https://nodei.co/npm/g3l.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/g3l/)
 
 # Installing
