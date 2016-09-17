@@ -16,6 +16,8 @@
 npm i g3l -g
 ```
 
+:zap: [More info](https://g3l.download) :zap:
+
 #  g3l [options]
 
   Options:
