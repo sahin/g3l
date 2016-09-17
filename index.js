@@ -17,6 +17,8 @@ var S = require('./lib/git-heads');
 var opn = require('opn');
 var isGitUrl = require('is-git-url');
 var notify = require('./lib/Notify');
+const assets = require('./lib/Assets.js');
+var globalModulesDir = require('global-modules');
 updateNotifier({pkg}).notify();
 
 
@@ -29,10 +31,44 @@ program
 .option('-c, --create', 'Create github repository')
 .option('--clone', 'Clone github repository')
 .option('-u, --update', 'Self update')
+.option('-a, --auto <auto>', 'Auto commit {true, false}')
 .parse(process.argv);
 
 function log(message) {
   console.log(emoji.emojify(':zap:'), colors.underline.white('Running') ,colors.cyan(message));
+}
+
+if (program.auto) {
+  var pm2 = require('pm2');
+  pm2.connect(function(err) {
+    if (err) {
+      console.error(err);
+      process.exit(2);
+    }
+    assets.dir()
+      .then((dir) => {console.log(dir);})
+    console.log('Insert dir.');
+    pm2.start({
+      name: process.cwd(),
+      script    : `${globalModulesDir}g3l/lib/AutoCommit.js`,
+      exec_mode : 'cluster',
+      max_memory_restart : '100M'
+    }, function(err, apps) {
+      pm2.disconnect();   // Disconnect from PM2
+      if (err) throw err
+    });
+  });
+} else {
+  var pm2 = require('pm2');
+  console.log('Find dir.');
+  assets.dir()
+    .then((dir) => {console.log(dir);})
+  pm2.delete('index', function(err) {
+    console.log(err);
+    process.exit();
+  })
+  pm2.disconnect();
+  process.exit();
 }
 
 var commands = [
