@@ -1,6 +1,6 @@
 {
   "name": "g3l",
-  "version": "8.9.11",
+  "version": "9.0.0",
   "description": "Git is easy, github cli is easy but g3l easiest git cli in the w0rld!",
   "main": "index.js",
   "repository": {
@@ -33,7 +33,6 @@
     "1n1t": "^1.0.24",
     "3x1st": "^1.0.3",
     "3x3c": "^1.0.2",
-    "analytics-node": "^2.1.0",
     "async": "^2.0.1",
     "br4nch": "^1.0.5",
     "c0mm1t": "^1.0.44",

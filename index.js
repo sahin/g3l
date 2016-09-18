@@ -17,7 +17,6 @@ var S = require('./lib/git-heads');
 var opn = require('opn');
 var isGitUrl = require('is-git-url');
 var notify = require('./lib/Notify');
-var fileSystem = require('./lib/FileSystem');
 const assets = require('./lib/Assets.js');
 var globalModulesDir = require('global-modules');
 updateNotifier({pkg}).notify();
@@ -31,16 +30,24 @@ program
 .option('-c, --create', 'Create github repository')
 .option('--clone', 'Clone github repository')
 .option('-u, --update', 'Self update')
-.option('-a, --auto', 'Auto commit')
-.option('-d, --disable', 'Auto commit disable')
+.option('-e, --enable', 'Enable Auto Commit')
+.option('-d, --disable', 'Disable Auto Commit')
 .parse(process.argv);
+
+function sleep(ms) {
+  return new Promise(function(resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, ms * 1000);
+  });
+}
 
 function log(message) {
   console.log(emoji.emojify(':zap:'), colors.underline.white('Running') ,colors.cyan(message));
 }
 
 if (program.auto) {
-  console.log('enable');
+  console.log(colors.green('g3l auto committer enabled in', process.cwd(), 'successfully. Happy coding..', emoji.emojify(':relaxed:')));
   var pm2 = require('pm2');
   var globalModulesDir = require('global-modules');
 
@@ -52,8 +59,7 @@ if (program.auto) {
 
     pm2.start({
       name: process.cwd(),
-      script    : `./lib/AutoCommit.js`,
-      // script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`, 
+      script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`,
       exec_mode : 'fork',
       max_memory_restart : '100M'
     }, function(err, apps) {
@@ -62,10 +68,15 @@ if (program.auto) {
     });
   });
 } else if (program.disable){
-  fileSystem.delete(process.cwd()) // Disable can not work.
-    .then((value) => {
-      console.log('Config upgraded');
-    })
+  console.log(colors.white('g3l auto committer disabled in', process.cwd(), 'successfully. '));
+  var pm2 = require('pm2');
+  pm2.delete(process.cwd(), function(err) {})
+  pm2.disconnect();
+  sleep(2)
+   .then((value) => {
+     console.log('Bye bye..', emoji.emojify(':white_frowning_face:'));
+     process.exit();
+   })
 }
 
 var commands = [
