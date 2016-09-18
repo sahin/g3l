@@ -79,13 +79,15 @@ npm i g3l -g
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
 
-                         |
+
 
 # Feature's              
 + Instant commit and push process.
 + Create GitHub repository in cli.
 + Your commit message filtered smart algorithm then dress up with emojis. (Not enough smart yet. Like me :smile:)
 + g3l watch your working directory and when you change something, g3l commit changed files insantly. You will be native notified when committing done.
+
+![Demo](images/demo.png)
 
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
