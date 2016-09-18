@@ -46,7 +46,7 @@ function log(message) {
   console.log(emoji.emojify(':zap:'), colors.underline.white('Running') ,colors.cyan(message));
 }
 
-if (program.auto) {
+if (program.enable) {
   console.log(colors.green('g3l auto committer enabled in', process.cwd(), 'successfully. Happy coding..', emoji.emojify(':relaxed:')));
   var pm2 = require('pm2');
   var globalModulesDir = require('global-modules');
