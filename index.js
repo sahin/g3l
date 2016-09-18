@@ -17,10 +17,10 @@ var S = require('./lib/git-heads');
 var opn = require('opn');
 var isGitUrl = require('is-git-url');
 var notify = require('./lib/Notify');
+var fileSystem = require('./lib/FileSystem');
 const assets = require('./lib/Assets.js');
 var globalModulesDir = require('global-modules');
 updateNotifier({pkg}).notify();
-var autoCommit = require('./lib/AutoCommit');
 
 program
 .option('-m, --message <message>', 'Commit message')
@@ -31,7 +31,8 @@ program
 .option('-c, --create', 'Create github repository')
 .option('--clone', 'Clone github repository')
 .option('-u, --update', 'Self update')
-.option('-a, --auto', 'Auto commit {true, false}')
+.option('-a, --auto', 'Auto commit')
+.option('-d, --disable', 'Auto commit disable')
 .parse(process.argv);
 
 function log(message) {
@@ -39,6 +40,7 @@ function log(message) {
 }
 
 if (program.auto) {
+  console.log('enable');
   var pm2 = require('pm2');
   var globalModulesDir = require('global-modules');
 
@@ -50,7 +52,8 @@ if (program.auto) {
 
     pm2.start({
       name: process.cwd(),
-      script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`,
+      script    : `./lib/AutoCommit.js`,
+      // script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`, 
       exec_mode : 'fork',
       max_memory_restart : '100M'
     }, function(err, apps) {
@@ -58,6 +61,11 @@ if (program.auto) {
       if (err) console.log(err);
     });
   });
+} else if (program.disable){
+  fileSystem.delete(process.cwd()) // Disable can not work.
+    .then((value) => {
+      console.log('Config upgraded');
+    })
 }
 
 var commands = [
