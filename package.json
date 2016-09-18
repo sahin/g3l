@@ -8,9 +8,7 @@
     "url": "git+https://github.com/svtek/g3l.git"
   },
   "bin": {
-    "g3l": "./index.js",
-    "g3l-auto": "./pm2.js",
-    "g3l-auto-disable": "./pm2-rm.js"
+    "g3l": "./index.js"
   },
   "keywords": [
     "Git",
