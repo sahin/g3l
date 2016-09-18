@@ -62,8 +62,6 @@ That's the reason you have to install node.
 npm i g3l -g
 ```
 
-<p align="right"><a href="#top">:clap:</a></p>
-
 # Usage
 | Short | Full | Description | Params | Example usage | Known issues |
 |-------|--------------|----------------------------------------------------------|--------|---------------------------|-----------------------------------------------------------------------|
@@ -86,6 +84,8 @@ npm i g3l -g
 + Create GitHub repository in cli.
 + Your commit message filtered smart algorithm then dress up with emojis. (Not enough smart yet. Like me :smile:)
 + g3l watch your working directory and when you change something, g3l commit changed files insantly. You will be native notified when committing done.
+
+<p align="right"><a href="#top">I'm done, I'll download. :clap:</a></p>
 
 ![Demo](images/demo.png)
 
