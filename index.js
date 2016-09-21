@@ -19,6 +19,7 @@ var isGitUrl = require('is-git-url');
 var notify = require('./lib/Notify');
 const assets = require('./lib/Assets.js');
 var globalModulesDir = require('global-modules');
+const os = require('os');
 updateNotifier({pkg}).notify();
 
 program
@@ -67,7 +68,7 @@ if (program.enable) {
       if (err) console.log(err);
     });
   });
-} else if (program.disable){
+} else if (program.disable) {
   console.log(colors.white('g3l auto committer disabled in', process.cwd(), 'successfully. '));
   var pm2 = require('pm2');
   pm2.delete(process.cwd(), function(err) {})
