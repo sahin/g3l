@@ -8,7 +8,8 @@
     "url": "git+https://github.com/svtek/g3l.git"
   },
   "bin": {
-    "g3l": "./index.js"
+    "g3l": "./index.js",
+    "gh": "./index.js"
   },
   "keywords": [
     "Git",
