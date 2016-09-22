@@ -176,10 +176,10 @@ function run(array) {
        if (eval('program.'+piece.name)) {
          if (piece.containRequiredParam || piece.boolean || eval('program.' + piece.name).length > 2) { /* If is has contain required param? */
             if (piece.boolean) {
-              eval(piece.function + '(' + JSON.stringify(piece) + `).then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})`);
+              eval(piece.function + '(' + JSON.stringify(piece) + `).then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})`);
             } else {
               piece.params.forEach(function(param) {
-                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));bugsnag.notify(new Error(err));})');
+                eval(piece.function + '(' + JSON.stringify(piece) + ').then((value) => {console.log(colors.grey(value));}).catch((err) => {console.log(colors.red(err));})');
               });
             }
          } else {
@@ -262,10 +262,15 @@ function status(command) {
 function update(command) {
   return new Promise(function(resolve, reject) {
     log('g3l update process started.')
-    spawn( "npm", [ "i", `-g`, 'g3l'], function( error, stdout ) {
-        notify({title: 'g3l', 'message': 'g3l update successfully', 'status':'resolve'})
+    E('npm i -g g3l')
+      .then((value) => {
+        notify({title: 'g3l', 'message': 'g3l updated successfully.', 'status':'resolve'})
         resolve('g3l updated successfully.')
-    });
+      })
+      .catch((err) => {
+        notify({title: 'g3l', 'message': `g3l doesn\'t updated.`, 'status':'reject'})
+        reject('g3l doesn\'t updated.')
+      })
   });
 }
 
