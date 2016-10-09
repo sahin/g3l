@@ -90,7 +90,6 @@ npm i g3l -g
 
 ![Demo](images/demo.png)
 
-v10!
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
 Made with :heart:
