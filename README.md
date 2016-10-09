@@ -78,9 +78,7 @@ npm i g3l -g
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
 
-
-
-# Feature's              
+# Feature          
 + Instant commit and push process.
 + Create GitHub repository in cli.
 + Your commit message filtered smart algorithm then dress up with emojis. (Not enough smart yet. Like me :smile:)
@@ -191,6 +189,7 @@ https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneCol
 Chrome will use the fallback black and white emoji.*
 
 <i>Added by [Barış Esen](http://github.com/barisesen) :+1: </i>
+
 
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
