@@ -192,7 +192,6 @@ Chrome will use the fallback black and white emoji.*
 
 <i>Added by [Barış Esen](http://github.com/barisesen) :+1: </i>
 
-
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
 Made with :heart:
