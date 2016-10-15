@@ -301,22 +301,19 @@ function clone(command) {
             if(value.indexOf('.git') > -1 && value.trim().length > 1) {
               return true;
             }
-            return 'Please enter a valid git repository';
+            return 'Please write correct git repository.'
           }
         },
         {
           type: 'input',
           name: 'name',
-          message: 'Which name you prefer for cloned repository directory name?',
-          validate: function (value) {
-            if (value.trim().length > 1) {
-              return true;
-            }
-            return 'Please enter a valid name repository';
-          }
+          message: 'Which name you prefer for cloned repository directory name? (Optional)'
         },
       ];
       inquirer.prompt(questions).then(function (answers) {
+        if (answers.name.trim().length < 1) {
+          answers.name = answers.url.split('/').pop(-1).split('.git')[0];
+        }
         E(`git clone ${answers.url} ${answers.name} && cd ${answers.name}`)
             .then((value) => {
               notify({title: 'g3l', 'message': 'Clone', 'subtitle': `Git clone successfully`, 'status':'resolve'})
