@@ -63,6 +63,8 @@ That's the reason you have to install node.
 npm i g3l -g
 ```
 
+> Note: g3l auto committer needs .gitignore file.
+
 # Usage
 | Short | Full | Description | Params | Example usage | Known issues |
 |-------|--------------|----------------------------------------------------------|--------|---------------------------|-----------------------------------------------------------------------|
