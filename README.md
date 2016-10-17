@@ -80,6 +80,11 @@ npm i g3l -g
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
 
+### Example chain : 
+```
+g3l -m "New branch for bug fix" -b fix/notBugItsFeature
+```
+
 # Feature          
 + Instant commit and push process.
 + Create GitHub repository in cli.

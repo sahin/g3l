@@ -48,6 +48,11 @@ function log(message) {
   console.log(emoji.emojify(':zap:'), colors.underline.white('Running') ,colors.cyan(message));
 }
 
+if (process.argv.length === 2) {
+  opn('https://github.com/svtek/g3l#usage');
+  process.exit()
+}
+
 if (program.enable) {
   exist(`${process.cwd()}/.gitignore`)
     .then(() => {
