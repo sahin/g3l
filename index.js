@@ -9,6 +9,7 @@ var m4g1c = require('m4g1c');
 var async = require('async');
 var colors = require('colors');
 var E = require('3x3c');
+var exist = require('3x1st');
 var updateNotifier = require('update-notifier');
 var pkg = require('./package.json');
 var CR = require('cr34t3');
@@ -48,26 +49,32 @@ function log(message) {
 }
 
 if (program.enable) {
-  console.log(colors.green('g3l auto committer enabled in', process.cwd(), 'successfully. Happy coding..', emoji.emojify(':relaxed:')));
-  var pm2 = require('pm2');
-  var globalModulesDir = require('global-modules');
+  exist(`${process.cwd()}/.gitignore`)
+    .then(() => {
+      console.log(colors.green('g3l auto committer enabled in', process.cwd(), 'successfully. Happy coding..', emoji.emojify(':relaxed:')));
+      var pm2 = require('pm2');
+      var globalModulesDir = require('global-modules');
 
-  pm2.connect(function(err) {
-    if (err) {
-      console.log(err);
-      process.exit(2);
-    }
+      pm2.connect(function(err) {
+        if (err) {
+          console.log(err);
+          process.exit(2);
+        }
 
-    pm2.start({
-      name: process.cwd(),
-      script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`,
-      exec_mode : 'fork',
-      max_memory_restart : '100M'
-    }, function(err, apps) {
-      pm2.disconnect();
-      if (err) console.log(err);
-    });
-  });
+        pm2.start({
+          name: process.cwd(),
+          script    : `${globalModulesDir}/g3l/lib/AutoCommit.js`,
+          exec_mode : 'fork',
+          max_memory_restart : '100M'
+        }, function(err, apps) {
+          pm2.disconnect();
+          if (err) console.log(err);
+        });
+      });
+    })
+    .catch(() => {
+      console.log(colors.red(`Please create .gitignore`));
+    })
 } else if (program.disable) {
   console.log(colors.white('g3l auto committer disabled in', process.cwd(), 'successfully. '));
   var pm2 = require('pm2');
