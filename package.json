@@ -40,7 +40,7 @@
     "cmdify": "0.0.4",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "cr34t3": "^1.0.34",
+    "cr34t3": "^1.0.35",
     "global-modules": "^0.2.3",
     "h0m3": "^1.0.1",
     "ignoring-watcher": "^1.1.0",

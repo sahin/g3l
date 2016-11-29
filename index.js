@@ -290,8 +290,8 @@ function create(command) {
   return new Promise(function(resolve, reject) {
      CR()
        .then((value) => {
-         log('Your repository url: ', value);
-         opn(value);
+         log('Your repository url: ', value.clone.url);
+         opn(value.clone_url);
          notify({title: 'g3l', 'message': 'g3l created github repository successfully', 'status':'resolve'})
          resolve(emoji.emojify(`:sunglasses: Horarayy! You can init your repository easily with this command: g3l -i`));
          process.exit();
