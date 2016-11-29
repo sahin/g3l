@@ -40,7 +40,7 @@
     "cmdify": "0.0.4",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "cr34t3": "^1.0.31",
+    "cr34t3": "^1.0.34",
     "global-modules": "^0.2.3",
     "h0m3": "^1.0.1",
     "ignoring-watcher": "^1.1.0",
@@ -50,7 +50,7 @@
     "node-emoji": "^1.4.1",
     "node-notifier": "^4.6.1",
     "opn": "^4.0.2",
-    "pm2": "^2.1.5",
+    "pm2": "^2.1.6",
     "prompt": "^1.0.0",
     "underscore": "^1.8.3",
     "update-notifier": "^1.0.2"
