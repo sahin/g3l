@@ -9,9 +9,6 @@
 </p>
 
 ------------------
-
-[![gitcheese.com](https://api.gitcheese.com/v1/projects/4ecb1219-b5ab-494d-a93d-f06b8035d2f2/badges?type=1)](https://www.gitcheese.com/app/#/projects/4ecb1219-b5ab-494d-a93d-f06b8035d2f2/pledges/create)
-
 [![Version npm](https://img.shields.io/npm/v/g3l.svg?style=flat-square)](https://www.npmjs.com/package/g3l)[![npm Downloads](https://img.shields.io/npm/dm/g3l.svg?style=flat-square)](https://www.npmjs.com/package/g3l)[![Dependencies](https://img.shields.io/david/svtek/g3l.svg?style=flat-square)](https://david-dm.org/svtek/g3l.svg)
 [![GitHub stars](https://img.shields.io/github/stars/svtek/g3l.svg?style=social&label=Star&maxAge=2592000)]()
 [![Website](https://img.shields.io/website-up-down-green-red/https/g3l.download.svg?maxAge=2592000?style=flat-square)]()
