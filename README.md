@@ -65,6 +65,7 @@ npm i g3l -g
 > Note: g3l auto committer needs .gitignore file.
 
 # Usage
+<details>
 | Short | Full | Description | Params | Example usage | Known issues |
 |-------|--------------|----------------------------------------------------------|--------|---------------------------|-----------------------------------------------------------------------|
 | -h | --help | Outputs list of commands and usage. | - | g3l -h | - |
@@ -78,6 +79,7 @@ npm i g3l -g
 | -u | --update | Self update, g3l. | - | g3l -u | - |
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
+</details>
 
 ### Example chain :
 ```
@@ -104,7 +106,7 @@ npm i -g g3l
 
 ## If you can't see emojis
 <details>
-  ### Manual install on any Linux
+### Manual install on any Linux
   Install for the current user without root:
   ```sh
   # 1. Download the latest version
@@ -116,7 +118,7 @@ npm i -g g3l
   ./install.sh
   ```
 
-  ### Install on Ubuntu Linux
+### Install on Ubuntu Linux
   Launchpad PPA: https://launchpad.net/~eosrei/+archive/ubuntu/fonts
 
   ```sh
@@ -128,14 +130,14 @@ npm i -g g3l
   Useful: [Emojione Picker for Ubuntu][13]
   [13]: https://github.com/gentakojima/emojione-picker-ubuntu
 
-  ### Install on Arch Linux
+### Install on Arch Linux
   AUR package: https://aur.archlinux.org/packages/emojione-color-font/
 
   ```sh
   yaourt -S emojione-color-font
   ```
 
-  ### Install on Gentoo Linux
+### Install on Gentoo Linux
   Gentoo repository: https://github.com/jorgicio/jorgicio-gentoo
 
   ```sh
@@ -147,7 +149,7 @@ npm i -g g3l
   emerge emojione-color-font
   ```
 
-  ## Install on OS X
+## Install on OS X
   There are three install options for OS X. Both SVGinOT versions are available
   from releases: https://github.com/eosrei/emojione-color-font/releases
 
@@ -166,7 +168,7 @@ npm i -g g3l
   *Reiterating: Only FireFox supports the SVGinOT color emoji for now. Safari and
   Chrome will use the fallback black and white emoji.*
 
-  ## Install on Windows
+## Install on Windows
 
   There are two install options for Windows. Both SVGinOT versions are available
   from releases: https://github.com/eosrei/emojione-color-font/releases
@@ -178,7 +180,7 @@ npm i -g g3l
   font for emoji characters. Download:
   https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-1.3.zip
 
-  ### Replace the default Windows emoji fonts
+### Replace the default Windows emoji fonts
 
   Windows 7, 8, 10 use emoji from both Segoe UI Symbol and Segoe UI Emoji. We
   need to replace both fonts, but keep the existing symbol characters from
