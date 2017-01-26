@@ -79,7 +79,7 @@ npm i g3l -g
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
 
-### Example chain : 
+### Example chain :
 ```
 g3l -m "New branch for bug fix" -b fix/notBugItsFeature
 ```
@@ -103,107 +103,109 @@ npm i -g g3l
 ![Demo](images/demo.png)
 
 ## If you can't see emojis
-### Manual install on any Linux
-Install for the current user without root:
-```sh
-# 1. Download the latest version
-wget https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-Linux-1.3.tar.gz
-# 2. Uncompress the file
-tar zxf EmojiOneColor-SVGinOT-Linux-1.3.tar.gz
-# 3. Run the installer
-cd EmojiOneColor-SVGinOT-Linux-1.3
-./install.sh
-```
+<details>
+  ### Manual install on any Linux
+  Install for the current user without root:
+  ```sh
+  # 1. Download the latest version
+  wget https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-Linux-1.3.tar.gz
+  # 2. Uncompress the file
+  tar zxf EmojiOneColor-SVGinOT-Linux-1.3.tar.gz
+  # 3. Run the installer
+  cd EmojiOneColor-SVGinOT-Linux-1.3
+  ./install.sh
+  ```
 
-### Install on Ubuntu Linux
-Launchpad PPA: https://launchpad.net/~eosrei/+archive/ubuntu/fonts
+  ### Install on Ubuntu Linux
+  Launchpad PPA: https://launchpad.net/~eosrei/+archive/ubuntu/fonts
 
-```sh
-sudo apt-add-repository ppa:eosrei/fonts
-sudo apt-get update
-sudo apt-get install fonts-emojione-svginot
-```
+  ```sh
+  sudo apt-add-repository ppa:eosrei/fonts
+  sudo apt-get update
+  sudo apt-get install fonts-emojione-svginot
+  ```
 
-Useful: [Emojione Picker for Ubuntu][13]
-[13]: https://github.com/gentakojima/emojione-picker-ubuntu
+  Useful: [Emojione Picker for Ubuntu][13]
+  [13]: https://github.com/gentakojima/emojione-picker-ubuntu
 
-### Install on Arch Linux
-AUR package: https://aur.archlinux.org/packages/emojione-color-font/
+  ### Install on Arch Linux
+  AUR package: https://aur.archlinux.org/packages/emojione-color-font/
 
-```sh
-yaourt -S emojione-color-font
-```
+  ```sh
+  yaourt -S emojione-color-font
+  ```
 
-### Install on Gentoo Linux
-Gentoo repository: https://github.com/jorgicio/jorgicio-gentoo
+  ### Install on Gentoo Linux
+  Gentoo repository: https://github.com/jorgicio/jorgicio-gentoo
 
-```sh
-# Install layman using Portage with USE="git" enabled, the default.
-emerge layman
-# Add the repo.
-layman -s jorgicio
-# Install the package.
-emerge emojione-color-font
-```
+  ```sh
+  # Install layman using Portage with USE="git" enabled, the default.
+  emerge layman
+  # Add the repo.
+  layman -s jorgicio
+  # Install the package.
+  emerge emojione-color-font
+  ```
 
-## Install on OS X
-There are three install options for OS X. Both SVGinOT versions are available
-from releases: https://github.com/eosrei/emojione-color-font/releases
+  ## Install on OS X
+  There are three install options for OS X. Both SVGinOT versions are available
+  from releases: https://github.com/eosrei/emojione-color-font/releases
 
-1. `EmojiOneColor-SVGinOT-1.3.zip` - The regular version of the font
-   installs like any other font and can be specifically selected, but OS X will
-   default to the `Apple Color Emoji` font for emojis.
-2. ` EmojiOneColor-SVGinOT-OSX-1.3.zip` - A hack to replace the `Apple
-   Color Emoji` font by [using the same internal name][14]. Install and accept
-   the warning in Font Book.
-3. `emojione-apple.ttf` - A SBIX bitmap Apple-format EmojiOne color font is
-   [available in the emojione project][15].
+  1. `EmojiOneColor-SVGinOT-1.3.zip` - The regular version of the font
+     installs like any other font and can be specifically selected, but OS X will
+     default to the `Apple Color Emoji` font for emojis.
+  2. ` EmojiOneColor-SVGinOT-OSX-1.3.zip` - A hack to replace the `Apple
+     Color Emoji` font by [using the same internal name][14]. Install and accept
+     the warning in Font Book.
+  3. `emojione-apple.ttf` - A SBIX bitmap Apple-format EmojiOne color font is
+     [available in the emojione project][15].
 
-[14]:http://www.macissues.com/2014/11/21/how-to-change-the-default-system-font-in-mac-os-x/
-[15]:https://github.com/Ranks/emojione/tree/master/assets/fonts
+  [14]:http://www.macissues.com/2014/11/21/how-to-change-the-default-system-font-in-mac-os-x/
+  [15]:https://github.com/Ranks/emojione/tree/master/assets/fonts
 
-*Reiterating: Only FireFox supports the SVGinOT color emoji for now. Safari and
-Chrome will use the fallback black and white emoji.*
+  *Reiterating: Only FireFox supports the SVGinOT color emoji for now. Safari and
+  Chrome will use the fallback black and white emoji.*
 
-## Install on Windows
+  ## Install on Windows
 
-There are two install options for Windows. Both SVGinOT versions are available
-from releases: https://github.com/eosrei/emojione-color-font/releases
+  There are two install options for Windows. Both SVGinOT versions are available
+  from releases: https://github.com/eosrei/emojione-color-font/releases
 
-### Standard install
+  ### Standard install
 
-The regular version of the font installs like any other font and can be
-specifically selected, but Windows will default to the `Segoe UI Emoji`
-font for emoji characters. Download:
-https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-1.3.zip
+  The regular version of the font installs like any other font and can be
+  specifically selected, but Windows will default to the `Segoe UI Emoji`
+  font for emoji characters. Download:
+  https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-1.3.zip
 
-### Replace the default Windows emoji fonts
+  ### Replace the default Windows emoji fonts
 
-Windows 7, 8, 10 use emoji from both Segoe UI Symbol and Segoe UI Emoji. We
-need to replace both fonts, but keep the existing symbol characters from
-Segoe UI Symbol.
+  Windows 7, 8, 10 use emoji from both Segoe UI Symbol and Segoe UI Emoji. We
+  need to replace both fonts, but keep the existing symbol characters from
+  Segoe UI Symbol.
 
-This package contains an install script that will generate both fonts (or
-in Windows 7, just Segoe UI Symbol) and install them for you. Running the
-install script requires both [Python][16] and pip in the PATH.
+  This package contains an install script that will generate both fonts (or
+  in Windows 7, just Segoe UI Symbol) and install them for you. Running the
+  install script requires both [Python][16] and pip in the PATH.
 
-1. Download the most recent Python 3 for Windows: https://www.python.org/downloads/windows/
-2. Start the installer, select "Add Python 3.5 to PATH" and finish the install process.
-3. Download EmojiOne Color Windows package from releases:
-https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-1.3-Win.zip
-4. Uncompress the file.
-5. Open the new EmojiOneColor directory.
-7. Run install.cmd. *Note: This will take some time.*
-8. Install both new fonts when requested.
-9. Done!
+  1. Download the most recent Python 3 for Windows: https://www.python.org/downloads/windows/
+  2. Start the installer, select "Add Python 3.5 to PATH" and finish the install process.
+  3. Download EmojiOne Color Windows package from releases:
+  https://github.com/eosrei/emojione-color-font/releases/download/v1.3/EmojiOneColor-SVGinOT-1.3-Win.zip
+  4. Uncompress the file.
+  5. Open the new EmojiOneColor directory.
+  7. Run install.cmd. *Note: This will take some time.*
+  8. Install both new fonts when requested.
+  9. Done!
 
-[16]:https://www.python.org/downloads/windows/
+  [16]:https://www.python.org/downloads/windows/
 
-*Reiterating: Only FireFox supports the SVGinOT color emoji for now. IE and
-Chrome will use the fallback black and white emoji.*
+  *Reiterating: Only FireFox supports the SVGinOT color emoji for now. IE and
+  Chrome will use the fallback black and white emoji.*
 
-<i>Added by [Barış Esen](http://github.com/barisesen) :+1: </i>
+  <i>Added by [Barış Esen](http://github.com/barisesen) :+1: </i>
 
+</details>
 
 Maintenance & Development [Çağatay Çalı](http://github.com/cagataycali)
 
