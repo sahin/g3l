@@ -65,7 +65,6 @@ npm i g3l -g
 > Note: g3l auto committer needs .gitignore file.
 
 # Usage
-<details>
 | Short | Full | Description | Params | Example usage | Known issues |
 |-------|--------------|----------------------------------------------------------|--------|---------------------------|-----------------------------------------------------------------------|
 | -h | --help | Outputs list of commands and usage. | - | g3l -h | - |
@@ -79,7 +78,6 @@ npm i g3l -g
 | -u | --update | Self update, g3l. | - | g3l -u | - |
 | -e | --enable | Enable auto committer for current directory. | - | g3l -e | - |
 | -d | --disable | Disable auto committer for current directory. | - | g3l -d | - |
-</details>
 
 ### Example chain :
 ```
