@@ -39,7 +39,7 @@ program
     program.outputHelp();
     console.log(`\n Unknown command ${cmd).`));
     console.log();
-  }); 
+  }) 
 .parse(process.argv);
 
 if (!program.args.length) {
