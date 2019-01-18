@@ -34,7 +34,17 @@ program
 .option('-u, --update', 'Self update')
 .option('-e, --enable', 'Enable Auto Commit')
 .option('-d, --disable', 'Disable Auto Commit')
+.arguments('<command>')
+  .action((cmd) => {
+    program.outputHelp();
+    console.log(`\n Unknown command ${cmd).`));
+    console.log();
+  }) 
 .parse(process.argv);
+
+if (!program.args.length) {
+  program.outputHelp();
+}
 
 function sleep(ms) {
   return new Promise(function(resolve, reject) {
